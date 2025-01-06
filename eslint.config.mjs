@@ -2,7 +2,6 @@ import globals from "globals";
 import prettierPlugin from "eslint-plugin-prettier";
 import tsPlugin from "@typescript-eslint/eslint-plugin";
 import tsParser from "@typescript-eslint/parser";
-import ESLintPlugin from 'eslint-webpack-plugin';
 
 export default [
   {
