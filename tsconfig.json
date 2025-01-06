@@ -12,7 +12,14 @@
     },
     "include": [
         "src/**/*",
-        ".storybook/**/*"
+        ".storybook/**/*",
+        "jest.config.js",
+        "test/**/*",
+    ],
+    "exclude": [
+        "node_modules",
+        "dist",
+        "coverage",
     ],
     "ts-node": {
         "compilerOptions": {
