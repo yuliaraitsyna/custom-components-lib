@@ -1,20 +1,43 @@
 {
-  "name": "custom-components-lib",
-  "type": "module",
+  "name": "@packages/build-config",
   "version": "1.0.0",
+  "description": "",
+  "main": "./build/index.ts",
   "scripts": {
-    "prepare": "husky install",
-    "lint": "eslint",
-    "lint:fix": "eslint --fix",
-    "prettier": "prettier --write ."
+    "build:dev": "webpack --env mode=development",
+    "build:prod": "webpack --env mode=production",
+    "build:desktop": "webpack --env mode=production --env platform=desktop",
+    "build:mobile": "webpack --env mode=production --env platform=mobile",
+    "start": "webpack serve",
+    "start:port": "npm start -- --env port=8000"
   },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "devDependencies": {
     "@eslint/js": "^9.17.0",
+    "@types/node": "^22.10.2",
+    "@types/react": "^19.0.3",
+    "@types/react-dom": "^19.0.2",
+    "@types/webpack": "^5.28.5",
+    "@types/webpack-bundle-analyzer": "^4.7.0",
+    "@types/webpack-dev-server": "^4.7.1",
+    "css-loader": "^7.1.2",
     "eslint": "^9.17.0",
+    "eslint-webpack-plugin": "^4.2.0",
+    "html-webpack-plugin": "^5.6.3",
     "husky": "^8.0.0",
     "lint-staged": "^15.3.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "style-loader": "^4.0.0",
+    "ts-loader": "^9.5.1",
+    "ts-node": "^10.9.2",
     "typescript": "^5.7.2",
-    "typescript-eslint": "^8.19.0"
+    "typescript-eslint": "^8.19.0",
+    "webpack": "^5.97.1",
+    "webpack-cli": "^6.0.1",
+    "webpack-dev-server": "^4.15.2"
   },
   "dependencies": {
     "eslint-plugin-prettier": "^5.2.1"

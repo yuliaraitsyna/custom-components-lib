@@ -2,6 +2,7 @@ import globals from "globals";
 import prettierPlugin from "eslint-plugin-prettier";
 import tsPlugin from "@typescript-eslint/eslint-plugin";
 import tsParser from "@typescript-eslint/parser";
+import ESLintPlugin from 'eslint-webpack-plugin';
 
 export default [
   {
@@ -21,11 +22,12 @@ export default [
         __dirname: "readonly",
       },
     },
-    ignores: ["dist/**", "webpack.config*.ts"],
-    plugins: {
-      prettier: prettierPlugin,
-      "@typescript-eslint": tsPlugin,
-    },
+    ignores: ["dist/**", "node_modules/**"],
+    plugins: 
+      {
+        prettier: prettierPlugin,
+        "@typescript-eslint": tsPlugin,
+      },
   },
   {
     files: ["**/*.ts", "**/*.tsx"],
