@@ -1,20 +1,5 @@
-@font-face {
-    font-family: 'Roboto';
-    src: url('/src/assets/fonts/Roboto/Roboto-Black.ttf') format('ttf');
-}
-
-:root {
-    --primary-color: #42a5f5;
-    --secondary-color: #ba68c8;
-    --success-color: #4caf50;
-    --error-color: #ef5350;
-    --warning-color: #ff9800;
-    --info-color: #03a9f4;
-    --disabled-text-color: #BDBDBD;
-    --disabled-background-color: #E0E0E0;
-    --onhover-darken-color: rgba(35, 65, 173, 0.1);
-    --shadow-color: rgba(0, 0, 0, 0.3);
-}
+@import url('/src/styles/fonts/fonts.css');
+@import url('/src/styles/colors/colors.css');
 
 .button {
     text-transform: uppercase;
