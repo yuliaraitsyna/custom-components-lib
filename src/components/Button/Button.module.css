@@ -5,7 +5,7 @@
     text-transform: uppercase;
     font-family: 'Roboto', sans-serif;
     border-radius: 5px;
-    color: inherit;
+    color: black;
 }
 
 .contained {
@@ -61,10 +61,6 @@
     padding: 9px;
     border: solid currentColor 1px;
     box-shadow: none;
-}
-
-.outlined:hover {
-    background-color: var(--onhover-darken-color);
 }
 
 .outlined.primary {
@@ -146,6 +142,38 @@
     color: var(--disabled-text-color);
 }
 
+.outlined.primary:hover,
+.text.primary:hover {
+    background-color: var(--primary-color-hover)
+}
+
+.outlined.secondary:hover,
+.text.secondary:hover {
+    background-color: var(--secondary-color-hover);
+}
+
+.outlined.success:hover,
+.text.success:hover {
+   background-color: var(--success-color-hover);
+}
+
+.outlined.error:hover,
+.text.error:hover {
+    background-color: var(--error-color-hover);
+}
+
+.outlined.warning:hover,
+.text.warning:hover {
+    background-color: var(--warning-color-hover);
+}
+
+.outlined.info:hover,
+.text.info:hover {
+    background-color: var(--info-color-hover);
+}
+
+
+.outlined:disabled:hover,
 .text:disabled:hover {
     background-color: transparent;
 }

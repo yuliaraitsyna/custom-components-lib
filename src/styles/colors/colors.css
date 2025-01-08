@@ -5,8 +5,13 @@
     --error-color: #ef5350;
     --warning-color: #ff9800;
     --info-color: #03a9f4;
+    --primary-color-hover: #42a4f528;
+    --secondary-color-hover: #ba68c828;
+    --success-color-hover: #4caf5028;
+    --error-color-hover: #ef535028;
+    --warning-color-hover: #ff980028;
+    --info-color-hover: #03a9f428;
     --disabled-text-color: #BDBDBD;
     --disabled-background-color: #E0E0E0;
-    --onhover-darken-color: rgba(35, 65, 173, 0.1);
     --shadow-color: rgba(0, 0, 0, 0.3);
 }

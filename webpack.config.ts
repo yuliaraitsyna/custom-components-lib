@@ -1,6 +1,7 @@
 import path from 'path';
 import type {Configuration} from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
 type BuildMode = 'development' | 'production';
 
@@ -35,8 +36,24 @@ export default (env: EnvVariables): Configuration => {
           },
         },
         {
-          test: /\.s?css$/,
-          use: [{loader: 'style-loader'}, {loader: 'css-loader', options: {modules: true}}, {loader: 'sass-loader'}],
+          test: /\.module\.css$/i,
+          use: [
+            'style-loader',
+            {
+              loader: 'css-loader',
+              options: {
+                modules: {
+                  namedExport: false,
+                  localIdentName: '[name]__[local]___[hash:base64:5]',
+                },
+              },
+            },
+          ],
+        },
+        {
+          test: /\.css$/i,
+          exclude: /\.module\.css$/i,
+          use: ['style-loader', 'css-loader'],
         },
         {
           test: /\.(woff|woff2|eot|ttf|otf)$/i,
@@ -47,6 +64,9 @@ export default (env: EnvVariables): Configuration => {
     plugins: [
       new HtmlWebpackPlugin({
         template: path.resolve(__dirname, 'src', 'index.html'),
+      }),
+      new MiniCssExtractPlugin({
+        filename: '[name].css',
       }),
     ],
   };
