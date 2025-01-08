@@ -7,7 +7,6 @@ type Size = 'small' | 'medium' | 'large';
 
 interface ButtonProps {
   children: React.ReactNode;
-  text?: string;
   disabled?: boolean;
   onClick?: () => void;
   color?: Color;
@@ -17,8 +16,7 @@ interface ButtonProps {
 
 const Button: React.FC<ButtonProps> = ({
   children,
-  text,
-  disabled = false,
+  disabled,
   onClick,
   color = 'primary',
   variant = 'contained',
@@ -32,7 +30,7 @@ const Button: React.FC<ButtonProps> = ({
 
   return (
     <button className={className} onClick={handleClick} disabled={disabled}>
-      {text || children}
+      {children}
     </button>
   );
 };

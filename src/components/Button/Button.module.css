@@ -10,46 +10,172 @@
     --error-color: #ef5350;
     --warning-color: #ff9800;
     --info-color: #03a9f4;
-    --shadow-color: rgba(0, 0, 0, 0.4);
+    --disabled-text-color: #BDBDBD;
+    --disabled-background-color: #E0E0E0;
+    --onhover-darken-color: rgba(35, 65, 173, 0.1);
+    --shadow-color: rgba(0, 0, 0, 0.3);
 }
 
 .button {
-    color: black;
     text-transform: uppercase;
     font-family: 'Roboto', sans-serif;
+    border-radius: 5px;
+    color: inherit;
+}
+
+.contained {
+    background-color: currentColor;
+    color: white;
     padding: 10px;
     border: none;
-    border-radius: 5px;
+    box-shadow: var(--shadow-color) 0px 2px 5px;
+    transition: box-shadow 0.2s ease-in-out;
+}
+
+.contained:hover {
+    filter: brightness(0.95);
+    box-shadow: var(--shadow-color) 0px 4px 7px;
+}
+
+.contained.primary {
+    background-color: var(--primary-color);
+}
+
+.contained.secondary {
+    background-color: var(--secondary-color);
+}
+
+.contained.success {
+    background-color: var(--success-color);
+}
+
+.contained.error {
+    background-color: var(--error-color);
+}
+
+.contained.warning {
+    background-color: var(--warning-color);
+}
+
+.contained.info {
+    background-color: var(--info-color);
+}
+
+.contained:disabled {
+    background-color: var(--disabled-background-color);
+    color: var(--disabled-text-color);
+}
+
+.contained:disabled:hover {
+    filter: brightness(1);
     box-shadow: var(--shadow-color) 0px 2px 5px;
 }
 
-.primary {
-    background-color: var(--primary-color);
-    color: white;
+.outlined {
+    background-color: white;
+    padding: 9px;
+    border: solid currentColor 1px;
+    box-shadow: none;
 }
 
-.secondary {
-    background-color: var(--secondary-color);
-    color: black;
+.outlined:hover {
+    background-color: var(--onhover-darken-color);
 }
 
-.success {
-    background-color: var(--success-color);
-    color: white;
+.outlined.primary {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
 }
 
-.error {
-    background-color: var(--error-color);
-    color: white;
+.outlined.secondary {
+    border-color: var(--secondary-color);
+    color: var(--secondary-color);
 }
 
-.warning {
-    background-color: var(--warning-color);
-    color: white;
+.outlined.success {
+    border-color: var(--success-color);
+    color: var(--success-color);
 }
 
-.info {
-    background-color: var(--info-color);
-    color: white;
+.outlined.error {
+    border-color: var(--error-color);
+    color: var(--error-color);
 }
 
+.outlined.warning {
+    border-color: var(--warning-color);
+    color: var(--warning-color);
+}
+
+.outlined.info {
+    border-color: var(--info-color);
+    color: var(--info-color);
+}
+
+.outlined:disabled {
+    border-color: var(--disabled-background-color);
+    color: var(--disabled-text-color);
+}
+
+.outlined:disabled:hover {
+    background-color: transparent;
+}
+
+.text {
+    background-color: transparent;
+    padding: 10px;
+    color: currentColor;
+    border: none;
+    box-shadow: none;
+}
+
+.text:hover {
+    background-color: var(--onhover-darken-color);
+}
+
+.text.primary {
+    color: var(--primary-color);
+}
+
+.text.secondary {
+    color: var(--secondary-color);
+}
+
+.text.success {
+    color: var(--success-color);
+}
+
+.text.error {
+    color: var(--error-color);
+}
+
+.text.warning {
+    color: var(--warning-color);
+}
+
+.text.info {
+    color: var(--info-color);
+}
+
+.text:disabled {
+    color: var(--disabled-text-color);
+}
+
+.text:disabled:hover {
+    background-color: transparent;
+}
+
+.small {
+    height: 35px;
+    font-size: 0.8rem;
+}
+
+.medium {
+    height: 45px;
+    font-size: 0.9rem;
+}
+
+.large {
+    height: 50px;
+    font-size: 1rem;
+}
