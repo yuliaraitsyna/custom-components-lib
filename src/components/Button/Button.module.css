@@ -1,1 +1,55 @@
+@font-face {
+    font-family: 'Roboto';
+    src: url('/src/assets/fonts/Roboto/Roboto-Black.ttf') format('ttf');
+}
+
+:root {
+    --primary-color: #42a5f5;
+    --secondary-color: #ba68c8;
+    --success-color: #4caf50;
+    --error-color: #ef5350;
+    --warning-color: #ff9800;
+    --info-color: #03a9f4;
+    --shadow-color: rgba(0, 0, 0, 0.4);
+}
+
+.button {
+    color: black;
+    text-transform: uppercase;
+    font-family: 'Roboto', sans-serif;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: var(--shadow-color) 0px 2px 5px;
+}
+
+.primary {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.secondary {
+    background-color: var(--secondary-color);
+    color: black;
+}
+
+.success {
+    background-color: var(--success-color);
+    color: white;
+}
+
+.error {
+    background-color: var(--error-color);
+    color: white;
+}
+
+.warning {
+    background-color: var(--warning-color);
+    color: white;
+}
+
+.info {
+    background-color: var(--info-color);
+    color: white;
+}
 

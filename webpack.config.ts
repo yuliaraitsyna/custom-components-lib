@@ -38,6 +38,10 @@ export default (env: EnvVariables): Configuration => {
           test: /\.s?css$/,
           use: [{loader: 'style-loader'}, {loader: 'css-loader', options: {modules: true}}, {loader: 'sass-loader'}],
         },
+        {
+          test: /\.(woff|woff2|eot|ttf|otf)$/i,
+          type: 'asset/resource',
+        },
       ],
     },
     plugins: [
