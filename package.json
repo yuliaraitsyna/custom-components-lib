@@ -2,7 +2,7 @@
   "name": "@packages/build-config",
   "version": "1.0.0",
   "description": "",
-  "main": "./build/index.ts",
+  "main": "lib/custom-components-lib.js",
   "scripts": {
     "build:dev": "webpack --env mode=development",
     "build:prod": "webpack --env mode=production",

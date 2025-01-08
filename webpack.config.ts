@@ -8,13 +8,18 @@ interface EnvVariables {
   mode: BuildMode;
 }
 
-export default (env: EnvVariables) => {
+const libraryName = 'custom-components-lib';
+
+export default (env: EnvVariables): Configuration => {
   const config: Configuration = {
     mode: env.mode ?? 'development',
     entry: path.resolve(__dirname, 'src', 'index.tsx'),
     output: {
-      path: path.resolve(__dirname, 'dist'),
-      filename: '[name].bundle.js',
+      path: path.resolve(__dirname, 'lib'),
+      filename: libraryName + '.js',
+      library: libraryName,
+      libraryTarget: 'umd',
+      umdNamedDefine: true,
       clean: true,
     },
     resolve: {
