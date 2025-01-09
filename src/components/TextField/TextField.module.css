@@ -1,0 +1,64 @@
+@import url('/src/styles/colors/colors.css');
+@import url('/src/styles/fonts/fonts.css');
+
+.container {
+    position: relative;
+    width: fit-content;
+    height: fit-content;
+    margin: 10px;
+}
+
+.text-field {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid var(--disabled-text-color);
+    border-radius: 5px;
+    outline: none;
+    font-family: 'Roboto';
+}
+
+.text-field.error {
+    border: 1px solid var(--error-color-dark);
+}
+
+.text-field:focus {
+    border: solid 2px var(--primary-color);
+}
+
+.text-field.error:focus {
+    border: solid 2px var(--error-color);
+}
+
+.label {
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  transform: translateY(-50%);
+  background-color: white;
+  padding: 0 5px;
+  color: var(--disabled-text-color);
+  font-size: 14px;
+  font-family: 'Roboto', sans-serif;
+  pointer-events: none;
+  transition: 0.2s ease;
+}
+
+.label.focused {
+    top: 5px;
+    left: 10px;
+    transform: translateY(-100%);
+    font-size: 12px;
+    color: var(--primary-color);
+}
+
+.label.error {
+    color: var(--error-color-dark);
+}
+
+.label.error.focused {
+    color: var(--error-color);
+}
+
+.label.warning {
+    color: var(--warning-color);
+}

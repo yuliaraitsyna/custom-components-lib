@@ -2,10 +2,7 @@ import React from 'react';
 import type {ButtonHTMLAttributes} from 'react';
 
 import styles from './Button.module.css';
-
-type Color = 'primary' | 'secondary' | 'error' | 'success' | 'warning' | 'info';
-type Variant = 'contained' | 'outlined' | 'text';
-type Size = 'small' | 'medium' | 'large';
+import type {Color, Size, Variant} from '../../types/types';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   color?: Color;

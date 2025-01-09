@@ -1,4 +1,5 @@
 import {Button} from './components/Button/Button';
+import {TextField} from './components/TextField/TextField';
 
 const App: React.FC = () => {
   return (
@@ -15,6 +16,7 @@ const App: React.FC = () => {
       <Button size="medium" variant="outlined" color="error" onClick={() => alert('click')}>
         button
       </Button>
+      <TextField placeholder="placeholder" error={true} />
     </>
   );
 };
