@@ -1,4 +1,5 @@
 import {Button} from './components/Button/Button';
+import {Select} from './components/Select/Select';
 import {TextField} from './components/TextField/TextField';
 
 const App: React.FC = () => {
@@ -17,7 +18,12 @@ const App: React.FC = () => {
         button
       </Button>
       <TextField placeholder="placeholder" error={true} />
-      <TextField placeholder="placeholder" value={'hello'} readOnly />
+      <TextField placeholder="placeholder" value={'hello'} helperText="helper text" readOnly />
+      <Select label="label" helperText="helper text" required>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+      </Select>
     </>
   );
 };
