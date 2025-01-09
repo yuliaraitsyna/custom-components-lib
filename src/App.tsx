@@ -17,7 +17,7 @@ const App: React.FC = () => {
         button
       </Button>
       <TextField placeholder="placeholder" error={true} />
-      <TextField placeholder="placeholder" />
+      <TextField placeholder="placeholder" required={true} />
     </>
   );
 };

@@ -13,6 +13,8 @@ type Story = StoryObj<typeof TextField>;
 export const Primary: Story = {
   args: {
     placeholder: 'username',
+    required: true,
+    helperText: 'helper',
   },
 };
 

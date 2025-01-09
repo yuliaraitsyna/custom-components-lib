@@ -8,12 +8,15 @@ interface TextFieldProps extends InputHTMLAttributes<HTMLInputElement> {
   helperText?: string;
 }
 
-const TextField: React.FC<TextFieldProps> = ({error, helperText, placeholder, ...props}) => {
+const TextField: React.FC<TextFieldProps> = ({error, helperText, placeholder, required, ...props}) => {
   const [isFocused, setIsFocused] = useState(false);
   const inputRef = useRef<HTMLInputElement | null>(null);
 
   const textFieldClassName = [styles.textField, error && styles.error].filter(Boolean).join(' ');
   const labelClassName = [styles.label, isFocused && styles.focused, error && styles.error].filter(Boolean).join(' ');
+  const helperTextClassName = [styles.helperText, error && styles.error].filter(Boolean).join(' ');
+
+  const labelText = required ? `${placeholder}*` : placeholder;
 
   useEffect(() => {
     if (props.value) {
@@ -36,7 +39,7 @@ const TextField: React.FC<TextFieldProps> = ({error, helperText, placeholder, ..
   return (
     <>
       <div className={styles.container}>
-        <label className={labelClassName}>{placeholder}</label>
+        <label className={labelClassName}>{labelText}</label>
         <input
           ref={inputRef}
           className={textFieldClassName}
@@ -45,7 +48,7 @@ const TextField: React.FC<TextFieldProps> = ({error, helperText, placeholder, ..
           onBlur={e => handleBlur(e)}
           {...props}
         />
-        <span className={styles.helperText}>{(error && helperText) ?? ' '}</span>
+        <span className={helperTextClassName}>{helperText ?? ' '}</span>
       </div>
     </>
   );
