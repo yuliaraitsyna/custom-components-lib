@@ -34,18 +34,20 @@ const TextField: React.FC<TextFieldProps> = ({error, helperText, placeholder, ..
   };
 
   return (
-    <div className={styles.container}>
-      <label className={labelClassName}>{placeholder}</label>
-      <input
-        ref={inputRef}
-        className={textFieldClassName}
-        placeholder={''}
-        onFocus={e => handleFocus(e)}
-        onBlur={e => handleBlur(e)}
-        {...props}
-      />
-      <span>{helperText}</span>
-    </div>
+    <>
+      <div className={styles.container}>
+        <label className={labelClassName}>{placeholder}</label>
+        <input
+          ref={inputRef}
+          className={textFieldClassName}
+          placeholder={''}
+          onFocus={e => handleFocus(e)}
+          onBlur={e => handleBlur(e)}
+          {...props}
+        />
+        <span className={styles.helperText}>{(error && helperText) ?? ' '}</span>
+      </div>
+    </>
   );
 };
 
