@@ -1,4 +1,5 @@
 import {useEffect, useRef, useState, type InputHTMLAttributes} from 'react';
+import type {InputType} from '../../types/types';
 import React from 'react';
 
 import styles from './TextField.module.css';
@@ -6,6 +7,7 @@ import styles from './TextField.module.css';
 interface TextFieldProps extends InputHTMLAttributes<HTMLInputElement> {
   error?: boolean;
   helperText?: string;
+  type?: InputType;
 }
 
 const TextField: React.FC<TextFieldProps> = ({error, helperText, placeholder, required, ...props}) => {
@@ -42,6 +44,7 @@ const TextField: React.FC<TextFieldProps> = ({error, helperText, placeholder, re
         <label className={labelClassName}>{labelText}</label>
         <input
           ref={inputRef}
+          type={props.type ?? 'text'}
           className={textFieldClassName}
           placeholder={''}
           onFocus={e => handleFocus(e)}
