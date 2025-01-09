@@ -1,4 +1,5 @@
 import {useEffect, useRef, useState, type InputHTMLAttributes} from 'react';
+import React from 'react';
 
 import styles from './TextField.module.css';
 

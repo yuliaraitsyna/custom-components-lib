@@ -1,8 +1,8 @@
 import React from 'react';
 import type {ButtonHTMLAttributes} from 'react';
+import type {Color, Size, Variant} from '../../types/types';
 
 import styles from './Button.module.css';
-import type {Color, Size, Variant} from '../../types/types';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   color?: Color;

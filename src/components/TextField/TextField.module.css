@@ -8,24 +8,25 @@
     margin: 10px;
 }
 
-.text-field {
+.textField {
     width: 100%;
     padding: 10px;
-    border: 2px solid var(--disabled-text-color);
+    border: 1px solid var(--disabled-text-color);
     border-radius: 5px;
     outline: none;
-    font-family: 'Roboto';
+    font-family: 'Roboto', sans-serif;
 }
 
-.text-field.error {
-    border: 1px solid var(--error-color-dark);
-}
-
-.text-field:focus {
+.textField:focus {
+    padding: 9px;
     border: solid 2px var(--primary-color);
 }
 
-.text-field.error:focus {
+.textField.error {
+    border: 1px solid var(--error-color-dark);
+}
+
+.textField.error:focus {
     border: solid 2px var(--error-color);
 }
 
@@ -57,8 +58,4 @@
 
 .label.error.focused {
     color: var(--error-color);
-}
-
-.label.warning {
-    color: var(--warning-color);
 }
