@@ -12,11 +12,9 @@ interface SelectProps extends SelectHTMLAttributes<HTMLInputElement> {
 const Select: React.FC<SelectProps> = ({label, helperText, children, ...props}) => {
   const [isFocused, setIsFocused] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-  // const [selectedOption, setSelectedOption] = useState<string | null>(null);
 
   const selectRef = useRef<HTMLInputElement | null>(null);
   const buttonRef = useRef<HTMLButtonElement | null>(null);
-  // const selectedOptionRef = useRef<HTMLLIElement | null>(null);
 
   const labelClassName = [styles.label, isFocused && styles.focused].filter(Boolean).join(' ');
   const optionsClassName = [styles.options, isOpen && styles.open].filter(Boolean).join(' ');
@@ -36,43 +34,40 @@ const Select: React.FC<SelectProps> = ({label, helperText, children, ...props}) 
     props.onFocus?.(event);
   };
 
-  const handleBlur = (event: React.FocusEvent<HTMLInputElement>): void => {
-    if (buttonRef.current && buttonRef.current.contains(event.relatedTarget as Node)) {
-      return;
-    }
+  const handleOpenClick = (): void => {
+    setIsOpen(!isOpen);
 
     if (selectRef.current && selectRef.current.value === '') {
       setIsFocused(false);
     }
-    setIsOpen(false);
-    props.onBlur?.(event);
-  };
 
-  const handleOpenClick = (): void => {
-    setIsOpen(!isOpen);
-    setIsFocused(!isFocused);
     isFocused ? selectRef.current?.blur() : selectRef.current?.focus();
   };
 
-  // const handleOptionHover = () => {
-  //     //implement hover on option to display in input and then onChange for "select"
-  // }
+  const handleOptionClick = (event: React.MouseEvent<HTMLLIElement>): void => {
+    const value = event.currentTarget.textContent;
 
-  // const handleOptionClick = (optionValue: string, optionElement: HTMLLIElement) => {
+    if (!value) {
+      setIsFocused(false);
+    }
 
-  // };
+    if (selectRef.current) {
+      selectRef.current.value = value;
+    }
+
+    const changeEvent = {
+      target: {value},
+    } as React.ChangeEvent<HTMLInputElement>;
+
+    props.onChange?.(changeEvent);
+
+    setIsOpen(false);
+  };
 
   return (
     <div className={styles.container}>
       <label className={labelClassName}>{labelText ?? ' '}</label>
-      <input
-        ref={selectRef}
-        className={styles.select}
-        onFocus={handleFocus}
-        onBlur={handleBlur}
-        readOnly={true}
-        {...props}
-      />
+      <input ref={selectRef} className={styles.select} onFocus={handleFocus} onBlur={null} readOnly={true} {...props} />
       <button ref={buttonRef} className={styles.arrow} onClick={handleOpenClick}>
         {isOpen ? '▲' : '▼'}
       </button>
@@ -80,7 +75,11 @@ const Select: React.FC<SelectProps> = ({label, helperText, children, ...props}) 
       <div className={optionsClassName}>
         <ul>
           {React.Children.map(children, child =>
-            React.isValidElement(child) ? <li key={uuidv4()}>{child}</li> : null,
+            React.isValidElement(child) ? (
+              <li key={uuidv4()} onClick={e => handleOptionClick(e)}>
+                {child}
+              </li>
+            ) : null,
           )}
         </ul>
       </div>
