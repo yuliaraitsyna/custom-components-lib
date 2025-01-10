@@ -1,4 +1,5 @@
 import {Button} from './components/Button/Button';
+import {Checkbox} from './components/Checkbox/Checkbox';
 import {Select} from './components/Select/Select';
 import {TextField} from './components/TextField/TextField';
 
@@ -24,6 +25,7 @@ const App: React.FC = () => {
         <option value="2">2</option>
         <option value="3">3</option>
       </Select>
+      <Checkbox onChange={e => console.log(e)}></Checkbox>
     </>
   );
 };
