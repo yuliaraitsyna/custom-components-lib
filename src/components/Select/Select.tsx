@@ -15,6 +15,7 @@ const Select: React.FC<SelectProps> = ({label, helperText, children, ...props}) 
   // const [selectedOption, setSelectedOption] = useState<string | null>(null);
 
   const selectRef = useRef<HTMLInputElement | null>(null);
+  const buttonRef = useRef<HTMLButtonElement | null>(null);
   // const selectedOptionRef = useRef<HTMLLIElement | null>(null);
 
   const labelClassName = [styles.label, isFocused && styles.focused].filter(Boolean).join(' ');
@@ -36,11 +37,21 @@ const Select: React.FC<SelectProps> = ({label, helperText, children, ...props}) 
   };
 
   const handleBlur = (event: React.FocusEvent<HTMLInputElement>): void => {
+    if (buttonRef.current && buttonRef.current.contains(event.relatedTarget as Node)) {
+      return;
+    }
+
     if (selectRef.current && selectRef.current.value === '') {
       setIsFocused(false);
     }
     setIsOpen(false);
     props.onBlur?.(event);
+  };
+
+  const handleOpenClick = (): void => {
+    setIsOpen(!isOpen);
+    setIsFocused(!isFocused);
+    isFocused ? selectRef.current?.blur() : selectRef.current?.focus();
   };
 
   // const handleOptionHover = () => {
@@ -62,6 +73,9 @@ const Select: React.FC<SelectProps> = ({label, helperText, children, ...props}) 
         readOnly={true}
         {...props}
       />
+      <button ref={buttonRef} className={styles.arrow} onClick={handleOpenClick}>
+        {isOpen ? '▲' : '▼'}
+      </button>
       {!isOpen && <span className={styles.helperText}>{helperText}</span>}
       <div className={optionsClassName}>
         <ul>

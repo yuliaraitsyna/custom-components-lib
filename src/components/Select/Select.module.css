@@ -59,16 +59,19 @@
 }
 
 .options {
-    display: none;
+    opacity: 0;
+    visibility: hidden;
     background-color: white;
     border: none;
     border-radius: 5px;
-    box-shadow: var(--shadow-color) 0px 0px 5px;;
+    box-shadow: var(--shadow-color) 0px 0px 5px;
     margin: 0;
+    transition: opacity 0.5s ease;
 }
 
 .options.open {
-    display: block;
+    opacity: 1;
+    visibility: visible;
 }
 
 .options > ul {
@@ -86,4 +89,19 @@
 
 .options > ul > li:hover {
     background-color: var(--hover-color);
+}
+
+.arrow {
+    position: absolute;
+    top: 12px;
+    right: 8px;
+    background-color: transparent;
+    border: none;
+    color: var(--helper-text-color);
+    width: fit-content;
+    font-size: 10px;
+}
+
+.arrow:hover {
+    cursor: pointer;
 }
