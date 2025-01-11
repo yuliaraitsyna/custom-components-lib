@@ -1,14 +1,18 @@
+import {useState} from 'react';
 import {Button} from './components/Button/Button';
 import {Checkbox} from './components/Checkbox/Checkbox';
+import {Modal} from './components/Modal/Modal';
 import {Select} from './components/Select/Select';
 import {Switch} from './components/Switch/Switch';
 import {TextField} from './components/TextField/TextField';
 
 const App: React.FC = () => {
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+
   return (
     <>
-      <Button size="large" variant="contained" color="primary" onClick={() => alert('click')}>
-        button
+      <Button size="large" variant="contained" color="primary" onClick={() => setIsModalOpen(true)}>
+        Open modal
       </Button>
       <Button size="small" variant="text" color="success" disabled={true}>
         button
@@ -31,6 +35,12 @@ const App: React.FC = () => {
       <Switch label="switch" checked></Switch>
       <Switch label="switch" disabled></Switch>
       <Switch label="switch" disabled checked></Switch>
+
+      <Modal open={isModalOpen} onClose={() => setIsModalOpen(false)}>
+        <h1>Modal window</h1>
+        <p>Description: this is a modal window. You can add children here</p>
+        <Switch label="modal switch" />
+      </Modal>
     </>
   );
 };
