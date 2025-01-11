@@ -1,0 +1,59 @@
+@import url('/src/styles/fonts/fonts.css');
+@import url('/src/styles/colors/colors.css');
+
+.container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.switch {
+    font-size: 12px;
+    position: relative;
+    display: inline-block;
+    width: 3em;
+    height: 1em;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    inset: 0;
+    background: var(--checkbox-border-color);
+    border-radius: 50px;
+    transition: background 0.2s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 1.4em;
+    width: 1.4em;
+    left: 0em;
+    top: -0.3em;
+    background-color: white;
+    border-radius: 50px;
+    box-shadow: 0 1px 3px var(--shadow-color);
+    transition: transform 0.5s;
+}
+
+.switch input:checked+.slider {
+    background: var(--primary-color-dark-opacite);
+}
+
+.switch input:checked+.slider:before {
+    transform: translateX(1.6em);
+    background-color: var(--primary-color-dark);
+}
+
+.label {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    margin-left: 10px;
+}

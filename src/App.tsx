@@ -1,6 +1,7 @@
 import {Button} from './components/Button/Button';
 import {Checkbox} from './components/Checkbox/Checkbox';
 import {Select} from './components/Select/Select';
+import {Switch} from './components/Switch/Switch';
 import {TextField} from './components/TextField/TextField';
 
 const App: React.FC = () => {
@@ -26,6 +27,7 @@ const App: React.FC = () => {
         <option value="3">3</option>
       </Select>
       <Checkbox onChange={e => console.log(e)} label="label" required></Checkbox>
+      <Switch label="switch"></Switch>
     </>
   );
 };
