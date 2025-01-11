@@ -10,17 +10,30 @@
     border-radius: 2px;
 }
 
+.checkbox.checked {
+    border: solid 2px var(--primary-color);
+    background-color: var(--primary-color);
+}
+
+.checkbox.disabled {
+    border: solid 2px var(--disabled-text-color);
+    background-color: transparent;
+}
+
+.checkbox.checked.disabled {
+    border: solid 2px var(--disabled-text-color);
+    background-color: var(--disabled-text-color);
+}
+
 .label {
     font-family: 'Roboro', sans-serif;
     margin-left: 10px;
     font-size: 14px;
 }
 
-.checkbox.checked {
-    border: solid 2px var(--primary-color);
-    background-color: var(--primary-color);
+.label.disabled {
+    color: var(--disabled-text-color);
 }
-
 .tickIcon {
     display: none;
     position: absolute;

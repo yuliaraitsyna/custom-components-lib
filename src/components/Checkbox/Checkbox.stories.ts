@@ -32,7 +32,7 @@ export const Disabled: Story = {
     label: 'checkbox label',
     onChange: () => console.log('changed'),
     required: true,
-    checked: true,
+    checked: false,
     disabled: true,
   },
 };
