@@ -25,7 +25,7 @@ const App: React.FC = () => {
         <option value="2">2</option>
         <option value="3">3</option>
       </Select>
-      <Checkbox onChange={e => console.log(e)}></Checkbox>
+      <Checkbox onChange={e => console.log(e)} label="label" required></Checkbox>
     </>
   );
 };
