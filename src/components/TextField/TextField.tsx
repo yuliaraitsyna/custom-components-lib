@@ -18,7 +18,7 @@ const TextField: React.FC<TextFieldProps> = ({error, helperText, placeholder, re
   const labelClassName = [styles.label, isFocused && styles.focused, error && styles.error].filter(Boolean).join(' ');
   const helperTextClassName = [styles.helperText, error && styles.error].filter(Boolean).join(' ');
 
-  const labelText = required ? `${placeholder}*` : placeholder;
+  const labelText = required && placeholder ? `${placeholder}*` : placeholder;
 
   useEffect(() => {
     if (props.value) {

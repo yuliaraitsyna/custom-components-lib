@@ -12,7 +12,7 @@ const Checkbox: React.FC<CheckboxProps> = ({checked, label, required, disabled, 
   const [isChecked, setIsChecked] = useState<boolean>(checked);
   const buttonRef = useRef<HTMLButtonElement | null>(null);
 
-  const labelText = required ? `${label}*` : label;
+  const labelText = required && label ? `${label}*` : label;
 
   const tickClassname = [styles.tickIcon, isChecked && styles.checked].filter(Boolean).join(' ');
   const checkboxClassName = [styles.checkbox, isChecked && styles.checked, disabled && styles.disabled]

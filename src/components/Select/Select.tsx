@@ -19,7 +19,7 @@ const Select: React.FC<SelectProps> = ({label, helperText, children, ...props}) 
   const labelClassName = [styles.label, isFocusedLabel && styles.focused].filter(Boolean).join(' ');
   const optionsClassName = [styles.options, isOpen && styles.open].filter(Boolean).join(' ');
 
-  const labelText = props.required ? `${label}*` : label;
+  const labelText = props.required && label ? `${label}*` : label;
 
   useEffect(() => {
     if (selectRef.current.value || isOpen) {

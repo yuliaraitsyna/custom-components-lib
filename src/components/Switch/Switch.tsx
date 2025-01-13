@@ -10,7 +10,7 @@ interface SwitchProps extends InputHTMLAttributes<HTMLInputElement> {
 const Switch: React.FC<SwitchProps> = ({label, ...props}) => {
   const [isChecked, setIsChecked] = useState<boolean>(!!props.checked);
 
-  const labelText = props.required ? `${label}*` : label;
+  const labelText = props.required && label ? `${label}*` : label;
 
   const labelClassName = [styles.label, props.disabled && styles.disabled].filter(Boolean).join(' ');
 
