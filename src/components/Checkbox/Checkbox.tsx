@@ -37,7 +37,7 @@ const Checkbox: React.FC<CheckboxProps> = ({checked, label, required, disabled, 
 
   return (
     <>
-      <button ref={buttonRef} className={checkboxClassName} onClick={handleButtonClick} {...props}>
+      <button ref={buttonRef} className={checkboxClassName} onClick={handleButtonClick} disabled={disabled} {...props}>
         <img src={tickImage} alt="Tick Icon" className={tickClassname} />
       </button>
       <label className={labelClassName}>{labelText}</label>
