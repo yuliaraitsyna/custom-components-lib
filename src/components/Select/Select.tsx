@@ -14,6 +14,7 @@ const Select: React.FC<SelectProps> = ({label, helperText, children, ...props}) 
   const [isOpen, setIsOpen] = useState(false);
 
   const selectRef = useRef<HTMLInputElement | null>(null);
+  const selecedOptionRef = useRef<HTMLLIElement | null>(null);
 
   const labelClassName = [styles.label, isFocusedLabel && styles.focused].filter(Boolean).join(' ');
   const optionsClassName = [styles.options, isOpen && styles.open].filter(Boolean).join(' ');
@@ -33,15 +34,20 @@ const Select: React.FC<SelectProps> = ({label, helperText, children, ...props}) 
       selectRef.current.style.width = `${labelText.length + 100}px`;
       selectRef.current.value = '';
     }
+
+    if (selecedOptionRef.current) {
+      selecedOptionRef.current.style.backgroundColor = 'blue';
+    }
   }, [labelText]);
 
   const handleFocus = (event: React.FocusEvent<HTMLInputElement>): void => {
+    console.log('focus');
     setIsOpen(true);
     props.onFocus?.(event);
   };
 
   const handleOpenClick = (): void => {
-    setIsOpen(prev => !prev);
+    isOpen ? selectRef.current?.blur() : selectRef.current?.focus();
   };
 
   const handleOptionClick = (event: React.MouseEvent<HTMLLIElement>): void => {
@@ -49,6 +55,7 @@ const Select: React.FC<SelectProps> = ({label, helperText, children, ...props}) 
 
     if (selectRef.current) {
       selectRef.current.value = value;
+      selecedOptionRef.current = event.currentTarget;
     }
 
     const changeEvent = {
@@ -63,6 +70,10 @@ const Select: React.FC<SelectProps> = ({label, helperText, children, ...props}) 
     props.onBlur?.(event);
   };
 
+  const handleMouseDown = (event: React.MouseEvent): void => {
+    event.preventDefault();
+  };
+
   return (
     <div className={styles.container}>
       <label className={labelClassName}>{labelText ?? ' '}</label>
@@ -74,24 +85,21 @@ const Select: React.FC<SelectProps> = ({label, helperText, children, ...props}) 
         onBlur={e => handleBlur(e)}
         readOnly={true}
       />
-      <span className={styles.arrow} onClick={handleOpenClick}>
+      {!isOpen && <span className={styles.helperText}>{helperText}</span>}
+      <div className={optionsClassName}>
+        <ul>
+          {React.Children.map(children, child =>
+            React.isValidElement(child) ? (
+              <li key={uuidv4()} onMouseDown={e => handleOptionClick(e)}>
+                {child}
+              </li>
+            ) : null,
+          )}
+        </ul>
+      </div>
+      <button className={styles.arrow} onClick={handleOpenClick} onMouseDown={e => handleMouseDown(e)}>
         {isOpen ? '▲' : '▼'}
-      </span>
-      {isOpen ? (
-        <div className={optionsClassName}>
-          <ul>
-            {React.Children.map(children, child =>
-              React.isValidElement(child) ? (
-                <li key={uuidv4()} onMouseDown={e => handleOptionClick(e)}>
-                  {child}
-                </li>
-              ) : null,
-            )}
-          </ul>
-        </div>
-      ) : (
-        <span className={styles.helperText}>{helperText}</span>
-      )}
+      </button>
     </div>
   );
 };
