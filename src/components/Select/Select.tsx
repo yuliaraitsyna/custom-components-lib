@@ -85,7 +85,7 @@ const Select: React.FC<SelectProps> = ({label, helperText, children, ...props}) 
         onBlur={e => handleBlur(e)}
         readOnly={true}
       />
-      {!isOpen && <span className={styles.helperText}>{helperText}</span>}
+      <span className={styles.helperText}>{helperText ?? ' '}</span>
       <div className={optionsClassName}>
         <ul>
           {React.Children.map(children, child =>

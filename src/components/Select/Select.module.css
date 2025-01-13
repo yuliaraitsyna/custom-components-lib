@@ -59,8 +59,11 @@
 }
 
 .options {
+    position: absolute;
+    z-index: 1;
+    top: calc(100% - 12px);
+    width: 100%;
     opacity: 0;
-    height: 0;
     visibility: hidden;
     background-color: white;
     border: none;
