@@ -23,7 +23,7 @@ const ModalWindow: React.FC<ModalProps> = ({onClose, children}) => {
   return isOpen ? (
     <>
       <div className={styles.modalOverlay} onClick={handleClose}></div>
-      <div className={styles.modal}>
+      <div className={styles.modal} role="dialog">
         <button className={styles.closeButton} onClick={handleClose}>
           ×
         </button>
