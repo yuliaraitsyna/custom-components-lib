@@ -1,4 +1,4 @@
-import {useLayoutEffect, useRef, useState, type SelectHTMLAttributes} from 'react';
+import {useEffect, useLayoutEffect, useRef, useState, type SelectHTMLAttributes} from 'react';
 import {v4 as uuidv4} from 'uuid';
 import React from 'react';
 
@@ -10,16 +10,23 @@ interface SelectProps extends SelectHTMLAttributes<HTMLInputElement> {
 }
 
 const Select: React.FC<SelectProps> = ({label, helperText, children, ...props}) => {
-  const [isFocused, setIsFocused] = useState(false);
+  const [isFocusedLabel, setIsFocusedLabel] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
   const selectRef = useRef<HTMLInputElement | null>(null);
-  const buttonRef = useRef<HTMLButtonElement | null>(null);
 
-  const labelClassName = [styles.label, isFocused && styles.focused].filter(Boolean).join(' ');
+  const labelClassName = [styles.label, isFocusedLabel && styles.focused].filter(Boolean).join(' ');
   const optionsClassName = [styles.options, isOpen && styles.open].filter(Boolean).join(' ');
 
   const labelText = props.required ? `${label}*` : label;
+
+  useEffect(() => {
+    if (selectRef.current.value || isOpen) {
+      setIsFocusedLabel(true);
+    } else {
+      setIsFocusedLabel(false);
+    }
+  }, [selectRef.current?.value, isOpen]);
 
   useLayoutEffect(() => {
     if (selectRef.current && labelText) {
@@ -29,27 +36,16 @@ const Select: React.FC<SelectProps> = ({label, helperText, children, ...props}) 
   }, [labelText]);
 
   const handleFocus = (event: React.FocusEvent<HTMLInputElement>): void => {
-    setIsFocused(true);
     setIsOpen(true);
     props.onFocus?.(event);
   };
 
   const handleOpenClick = (): void => {
-    setIsOpen(!isOpen);
-
-    if (selectRef.current && selectRef.current.value === '') {
-      setIsFocused(false);
-    }
-
-    isFocused ? selectRef.current?.blur() : selectRef.current?.focus();
+    setIsOpen(prev => !prev);
   };
 
   const handleOptionClick = (event: React.MouseEvent<HTMLLIElement>): void => {
     const value = event.currentTarget.textContent;
-
-    if (!value) {
-      setIsFocused(false);
-    }
 
     if (selectRef.current) {
       selectRef.current.value = value;
@@ -60,29 +56,42 @@ const Select: React.FC<SelectProps> = ({label, helperText, children, ...props}) 
     } as React.ChangeEvent<HTMLInputElement>;
 
     props.onChange?.(changeEvent);
+  };
 
+  const handleBlur = (event: React.FocusEvent<HTMLInputElement>): void => {
     setIsOpen(false);
+    props.onBlur?.(event);
   };
 
   return (
     <div className={styles.container}>
       <label className={labelClassName}>{labelText ?? ' '}</label>
-      <input ref={selectRef} className={styles.select} onFocus={handleFocus} onBlur={null} readOnly={true} {...props} />
-      <button ref={buttonRef} className={styles.arrow} onClick={handleOpenClick}>
+      <input
+        {...props}
+        ref={selectRef}
+        className={styles.select}
+        onFocus={handleFocus}
+        onBlur={e => handleBlur(e)}
+        readOnly={true}
+      />
+      <span className={styles.arrow} onClick={handleOpenClick}>
         {isOpen ? '▲' : '▼'}
-      </button>
-      {!isOpen && <span className={styles.helperText}>{helperText}</span>}
-      <div className={optionsClassName}>
-        <ul>
-          {React.Children.map(children, child =>
-            React.isValidElement(child) ? (
-              <li key={uuidv4()} onClick={e => handleOptionClick(e)}>
-                {child}
-              </li>
-            ) : null,
-          )}
-        </ul>
-      </div>
+      </span>
+      {isOpen ? (
+        <div className={optionsClassName}>
+          <ul>
+            {React.Children.map(children, child =>
+              React.isValidElement(child) ? (
+                <li key={uuidv4()} onMouseDown={e => handleOptionClick(e)}>
+                  {child}
+                </li>
+              ) : null,
+            )}
+          </ul>
+        </div>
+      ) : (
+        <span className={styles.helperText}>{helperText}</span>
+      )}
     </div>
   );
 };

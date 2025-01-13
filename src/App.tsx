@@ -25,7 +25,12 @@ const App: React.FC = () => {
       </Button>
       <TextField placeholder="placeholder" error={true} />
       <TextField placeholder="placeholder" value={'hello'} helperText="helper text" readOnly />
-      <Select label="label" helperText="helper text" onChange={() => console.log('change')} required>
+      <Select
+        label="label"
+        helperText="helper text"
+        onChange={() => console.log('change')}
+        onBlur={() => console.log('blur')}
+        required>
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
