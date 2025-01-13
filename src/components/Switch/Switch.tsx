@@ -22,7 +22,7 @@ const Switch: React.FC<SwitchProps> = ({label, ...props}) => {
   return (
     <div className={styles.container}>
       <label className={styles.switch}>
-        <input {...props} type="checkbox" onChange={e => handleChange(e)} checked={isChecked}></input>
+        <input {...props} type="checkbox" onChange={e => handleChange(e)} checked={isChecked} role="switch"></input>
         <span className={styles.slider}></span>
       </label>
       <label className={labelClassName}>{labelText}</label>
