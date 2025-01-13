@@ -38,18 +38,29 @@ const TextField: React.FC<TextFieldProps> = ({error, helperText, placeholder, re
     props.onBlur?.(event);
   };
 
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>): void => {
+    if (event.key === 'Enter') {
+      inputRef.current?.blur();
+    }
+
+    props.onKeyDown?.(event);
+  };
+
   return (
     <>
       <div className={styles.container}>
         <label className={labelClassName}>{labelText}</label>
         <input
+          {...props}
           ref={inputRef}
           type={props.type ?? 'text'}
           className={textFieldClassName}
           placeholder={''}
           onFocus={e => handleFocus(e)}
           onBlur={e => handleBlur(e)}
-          {...props}
+          onKeyDown={e => handleKeyDown(e)}
+          required={required}
+          role="textbox"
         />
         <span className={helperTextClassName}>{helperText ?? ' '}</span>
       </div>

@@ -23,7 +23,12 @@ const App: React.FC = () => {
       <Button size="medium" variant="outlined" color="error" onClick={() => alert('click')}>
         button
       </Button>
-      <TextField placeholder="placeholder" error={true} />
+      <TextField
+        placeholder="placeholder"
+        error={true}
+        onChange={() => console.log('change')}
+        onBlur={() => console.log('blur')}
+      />
       <TextField placeholder="placeholder" value={'hello'} helperText="helper text" readOnly />
       <Select
         label="label"
