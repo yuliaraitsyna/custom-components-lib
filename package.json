@@ -1,5 +1,12 @@
 {
-  "name": "@packages/build-config",
+  "name": "@yuliaraitsyna/custom-components-lib",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yuliaraitsyna/custom-components-lib.git"
+  },
   "version": "1.0.0",
   "description": "",
   "main": "lib/custom-components-lib.js",
