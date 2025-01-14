@@ -14,7 +14,6 @@ const Select: React.FC<SelectProps> = ({label, helperText, children, ...props}) 
   const [isOpen, setIsOpen] = useState(false);
 
   const selectRef = useRef<HTMLInputElement | null>(null);
-  const selecedOptionRef = useRef<HTMLLIElement | null>(null);
 
   const labelClassName = [styles.label, isFocusedLabel && styles.focused].filter(Boolean).join(' ');
   const optionsClassName = [styles.options, isOpen && styles.open].filter(Boolean).join(' ');
@@ -34,10 +33,6 @@ const Select: React.FC<SelectProps> = ({label, helperText, children, ...props}) 
       selectRef.current.style.width = `${labelText.length + 100}px`;
       selectRef.current.value = '';
     }
-
-    if (selecedOptionRef.current) {
-      selecedOptionRef.current.style.backgroundColor = 'blue';
-    }
   }, [labelText]);
 
   const handleFocus = (event: React.FocusEvent<HTMLInputElement>): void => {
@@ -55,7 +50,6 @@ const Select: React.FC<SelectProps> = ({label, helperText, children, ...props}) 
 
     if (selectRef.current) {
       selectRef.current.value = value;
-      selecedOptionRef.current = event.currentTarget;
     }
 
     const changeEvent = {
@@ -88,13 +82,11 @@ const Select: React.FC<SelectProps> = ({label, helperText, children, ...props}) 
       <span className={styles.helperText}>{helperText ?? ' '}</span>
       <div className={optionsClassName}>
         <ul>
-          {React.Children.map(children, child =>
-            React.isValidElement(child) ? (
-              <li key={uuidv4()} onMouseDown={e => handleOptionClick(e)}>
-                {child}
-              </li>
-            ) : null,
-          )}
+          {React.Children.map(children, child => (
+            <li key={uuidv4()} onMouseDown={e => handleOptionClick(e)}>
+              {child}
+            </li>
+          ))}
         </ul>
       </div>
       <button className={styles.arrow} onClick={handleOpenClick} onMouseDown={e => handleMouseDown(e)}>
