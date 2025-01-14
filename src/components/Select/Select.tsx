@@ -78,9 +78,10 @@ const Select: React.FC<SelectProps> = ({label, helperText, children, ...props}) 
         onFocus={handleFocus}
         onBlur={e => handleBlur(e)}
         readOnly={true}
+        role="input"
       />
       <span className={styles.helperText}>{helperText ?? ' '}</span>
-      <div className={optionsClassName}>
+      <div className={optionsClassName} role="menu">
         <ul>
           {React.Children.map(children, child => (
             <li key={uuidv4()} onMouseDown={e => handleOptionClick(e)}>
