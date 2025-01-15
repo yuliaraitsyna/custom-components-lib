@@ -1,6 +1,6 @@
 import {fireEvent, render, screen} from '@testing-library/react';
-import TextField from '../../src/components/TextField/TextField';
-import Button from '../../src/components/Button/Button';
+import {TextField} from '../../src/components/TextField/TextField';
+import {Button} from '../../src/components/Button/Button';
 import React from 'react';
 
 describe('TextField tests', () => {

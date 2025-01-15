@@ -1,5 +1,5 @@
 import {fireEvent, render, screen} from '@testing-library/react';
-import Switch from '../../src/components/Switch/Switch';
+import {Switch} from '../../src/components/Switch/Switch';
 import React from 'react';
 
 describe('Switch tests', () => {

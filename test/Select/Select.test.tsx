@@ -1,5 +1,5 @@
 import {fireEvent, render, screen} from '@testing-library/react';
-import Select from '../../src/components/Select/Select';
+import {Select} from '../../src/components/Select/Select';
 import React from 'react';
 
 describe('Select tests', () => {

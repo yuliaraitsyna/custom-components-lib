@@ -1,5 +1,5 @@
 import {fireEvent, render, screen} from '@testing-library/react';
-import Checkbox from '../../src/components/Checkbox/Checkbox';
+import {Checkbox} from '../../src/components/Checkbox/Checkbox';
 import React from 'react';
 
 describe('Checkbox tests', () => {
