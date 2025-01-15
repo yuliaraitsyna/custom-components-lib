@@ -19,6 +19,8 @@
         "node_modules",
         "lib",
         "coverage",
+        "**/*.stories.ts",
+        "**/*.stories.tsx",
     ],
     "ts-node": {
         "compilerOptions": {
