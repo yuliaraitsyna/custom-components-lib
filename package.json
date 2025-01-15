@@ -1,10 +1,10 @@
 {
   "name": "@yuliaraitsyna/custom-components-lib",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "",
   "outDir": "lib",
-  "main": "lib/custom-components-lib.js",
-  "module": "lib/custom-components-lib.js",
+  "main": "lib/main.js",
+  "module": "lib/main.js",
   "types": "lib/index.d.ts",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com",
@@ -80,7 +80,6 @@
     "webpack-dev-server": "^4.15.2"
   },
   "dependencies": {
-    "@yuliaraitsyna/custom-components-lib": "^1.0.2",
     "eslint-plugin-prettier": "^5.2.1"
   },
   "lint-staged": {
