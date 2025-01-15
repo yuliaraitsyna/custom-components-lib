@@ -1,6 +1,8 @@
-export {default as Button} from './components/Button/Button';
-export {default as Checkbox} from './components/Checkbox/Checkbox';
-export {default as Modal} from './components/Modal/Modal';
-export {default as Select} from './components/Select/Select';
-export {default as Switch} from './components/Switch/Switch';
-export {default as TextField} from './components/TextField/TextField';
+import {Button} from './components/Button/Button';
+import {Checkbox} from './components/Checkbox/Checkbox';
+import {Modal} from './components/Modal/Modal';
+import {Select} from './components/Select/Select';
+import {Switch} from './components/Switch/Switch';
+import {TextField} from './components/TextField/TextField';
+
+export {Button, Checkbox, Modal, Select, Switch, TextField};

@@ -97,4 +97,4 @@ const Select: React.FC<SelectProps> = ({label, helperText, children, ...props}) 
   );
 };
 
-export default Select;
+export {Select};

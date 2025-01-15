@@ -8,32 +8,23 @@ interface EnvVariables {
   mode: BuildMode;
 }
 
-const libraryName = 'custom-components-lib';
-
 export default (env: EnvVariables): Configuration => {
   const config: Configuration = {
     mode: env.mode ?? 'development',
     entry: path.resolve(__dirname, 'src', 'index.ts'),
     output: {
       path: path.resolve(__dirname, 'lib'),
-      filename: libraryName + '.js',
-      library: libraryName,
+      filename: '[name].js',
+      library: '[name]',
       libraryTarget: 'umd',
       umdNamedDefine: true,
       clean: true,
     },
     resolve: {
-      extensions: ['.tsx', '.ts', '.js'],
+      extensions: ['.tsx', '.ts'],
     },
     module: {
       rules: [
-        {
-          test: /\.(ts|tsx)$/,
-          exclude: [/node_modules/],
-          use: {
-            loader: 'ts-loader',
-          },
-        },
         {
           test: /\.module\.css$/i,
           use: [
@@ -53,6 +44,13 @@ export default (env: EnvVariables): Configuration => {
           test: /\.css$/i,
           exclude: /\.module\.css$/i,
           use: ['style-loader', 'css-loader'],
+        },
+        {
+          test: /\.(ts|tsx)$/,
+          exclude: [/node_modules/],
+          use: {
+            loader: 'ts-loader',
+          },
         },
         {
           test: /\.(png|svg|jpg|jpeg|gif)$/i,
