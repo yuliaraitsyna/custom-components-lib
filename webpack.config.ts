@@ -1,6 +1,5 @@
 import path from 'path';
 import type {Configuration} from 'webpack';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
 type BuildMode = 'development' | 'production';
@@ -9,32 +8,23 @@ interface EnvVariables {
   mode: BuildMode;
 }
 
-const libraryName = 'custom-components-lib';
-
 export default (env: EnvVariables): Configuration => {
   const config: Configuration = {
     mode: env.mode ?? 'development',
-    entry: path.resolve(__dirname, 'src', 'index.tsx'),
+    entry: path.resolve(__dirname, 'src', 'index.ts'),
     output: {
       path: path.resolve(__dirname, 'lib'),
-      filename: libraryName + '.js',
-      library: libraryName,
+      filename: '[name].js',
+      library: '[name]',
       libraryTarget: 'umd',
       umdNamedDefine: true,
       clean: true,
     },
     resolve: {
-      extensions: ['.tsx', '.ts', '.js'],
+      extensions: ['.tsx', '.ts'],
     },
     module: {
       rules: [
-        {
-          test: /\.(ts|js)x?$/,
-          exclude: /node_modules/,
-          use: {
-            loader: 'ts-loader',
-          },
-        },
         {
           test: /\.module\.css$/i,
           use: [
@@ -56,6 +46,13 @@ export default (env: EnvVariables): Configuration => {
           use: ['style-loader', 'css-loader'],
         },
         {
+          test: /\.(ts|tsx)$/,
+          exclude: [/node_modules/],
+          use: {
+            loader: 'ts-loader',
+          },
+        },
+        {
           test: /\.(png|svg|jpg|jpeg|gif)$/i,
           type: 'asset/resource',
         },
@@ -66,9 +63,6 @@ export default (env: EnvVariables): Configuration => {
       ],
     },
     plugins: [
-      new HtmlWebpackPlugin({
-        template: path.resolve(__dirname, 'src', 'index.html'),
-      }),
       new MiniCssExtractPlugin({
         filename: '[name].css',
       }),

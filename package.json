@@ -1,8 +1,24 @@
 {
-  "name": "@packages/build-config",
-  "version": "1.0.0",
+  "name": "@yuliaraitsyna/custom-components-lib",
+  "version": "1.0.4",
   "description": "",
-  "main": "lib/custom-components-lib.js",
+  "outDir": "lib",
+  "main": "lib/main.js",
+  "module": "lib/main.js",
+  "types": "lib/index.d.ts",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com",
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yuliaraitsyna/custom-components-lib.git"
+  },
+  "files": [
+    "lib",
+    "README.md"
+  ],
+  "sideEffects": false,
   "scripts": {
     "build:dev": "webpack --env mode=development",
     "build:prod": "webpack --env mode=production",
@@ -17,7 +33,7 @@
     "test:coverage": "jest --coverage"
   },
   "keywords": [],
-  "author": "",
+  "author": "Yuliya Raitsyna",
   "license": "ISC",
   "devDependencies": {
     "@chromatic-com/storybook": "^3.2.3",
