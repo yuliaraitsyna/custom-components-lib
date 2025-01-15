@@ -30,4 +30,4 @@ const Switch: React.FC<SwitchProps> = ({label, ...props}) => {
   );
 };
 
-export {Switch};
+export default Switch;

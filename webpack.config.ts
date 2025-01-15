@@ -1,6 +1,5 @@
 import path from 'path';
 import type {Configuration} from 'webpack';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
 type BuildMode = 'development' | 'production';
@@ -14,7 +13,7 @@ const libraryName = 'custom-components-lib';
 export default (env: EnvVariables): Configuration => {
   const config: Configuration = {
     mode: env.mode ?? 'development',
-    entry: path.resolve(__dirname, 'src', 'index.tsx'),
+    entry: path.resolve(__dirname, 'src', 'index.ts'),
     output: {
       path: path.resolve(__dirname, 'lib'),
       filename: libraryName + '.js',
@@ -29,7 +28,7 @@ export default (env: EnvVariables): Configuration => {
     module: {
       rules: [
         {
-          test: /\.(ts|js)x?$/,
+          test: /\.(ts|tsx)$/,
           exclude: /node_modules/,
           use: {
             loader: 'ts-loader',
@@ -66,9 +65,6 @@ export default (env: EnvVariables): Configuration => {
       ],
     },
     plugins: [
-      new HtmlWebpackPlugin({
-        template: path.resolve(__dirname, 'src', 'index.html'),
-      }),
       new MiniCssExtractPlugin({
         filename: '[name].css',
       }),

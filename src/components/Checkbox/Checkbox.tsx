@@ -45,4 +45,4 @@ const Checkbox: React.FC<CheckboxProps> = ({checked, label, required, disabled, 
   );
 };
 
-export {Checkbox};
+export default Checkbox;

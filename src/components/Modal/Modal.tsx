@@ -37,4 +37,4 @@ const Modal: React.FC<ModalProps> = ({open, onClose, children}) => {
   return open ? createPortal(<ModalWindow onClose={onClose}>{children}</ModalWindow>, document.body) : null;
 };
 
-export {Modal};
+export default Modal;

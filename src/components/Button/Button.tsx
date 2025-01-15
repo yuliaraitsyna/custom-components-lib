@@ -20,4 +20,4 @@ const Button: React.FC<ButtonProps> = ({color = 'primary', variant = 'contained'
   );
 };
 
-export {Button};
+export default Button;

@@ -21,7 +21,7 @@ export default [
         __dirname: "readonly",
       },
     },
-    ignores: ["lib/**", "node_modules/**", ".storybook/**"],
+    ignores: ["lib/**", "node_modules/**", ".storybook/**",  "test/**/*"],
     plugins: 
       {
         prettier: prettierPlugin,
@@ -30,7 +30,7 @@ export default [
   },
   {
     files: ["**/*.ts", "**/*.tsx"],
-    ignores: ["lib/**", "node_modules/**", ".storybook/**"],
+    ignores: ["lib/**/*", "node_modules/**", ".storybook/**", "test/**/*"],
     rules: {
       "@typescript-eslint/no-unused-vars": ["error", { argsIgnorePattern: "^_" }],
       "@typescript-eslint/explicit-function-return-type": "warn",
@@ -42,18 +42,26 @@ export default [
     },
   },
   {
-    files: ["webpack.config*.ts"],
+    files: ["webpack.config.ts", "jest.config.js"],
     languageOptions: {
-      sourceType: "module",
+      parser: tsParser,
+      parserOptions: {
+        ecmaVersion: "latest",
+        sourceType: "module",
+        project: null,
+      },
       globals: {
         ...globals.node,
       },
     },
     rules: {
-      "prettier/prettier": ["error"],
+      "@typescript-eslint/no-var-requires": "off",
+      "@typescript-eslint/no-explicit-any": "off",
     },
     plugins: {
-      prettier: prettierPlugin,
+      "@typescript-eslint": tsPlugin,
+      "prettier": prettierPlugin,
     },
   },
+  
 ];

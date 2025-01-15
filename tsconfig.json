@@ -1,5 +1,7 @@
 {
     "compilerOptions": {
+        "declaration": true,
+        "declarationDir": "lib",
         "outDir": "lib",
         "noImplicitAny": true,
         "module": "ESNext",
@@ -11,11 +13,7 @@
         "esModuleInterop": true,
     },
     "include": [
-        "webpack.config.ts",
         "src/**/*",
-        ".storybook/**/*",
-        "jest.config.js",
-        "test/**/*",
     ],
     "exclude": [
         "node_modules",
