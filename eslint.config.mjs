@@ -21,7 +21,7 @@ export default [
         __dirname: "readonly",
       },
     },
-    ignores: ["lib/**", "node_modules/**", ".storybook/**",  "test/**/*"],
+    ignores: ["lib/**", "node_modules/**", ".storybook/**",  "test/**/*", "**/*.stories.ts"],
     plugins: 
       {
         prettier: prettierPlugin,
@@ -30,7 +30,7 @@ export default [
   },
   {
     files: ["**/*.ts", "**/*.tsx"],
-    ignores: ["lib/**/*", "node_modules/**", ".storybook/**", "test/**/*"],
+    ignores: ["lib/**/*", "node_modules/**", ".storybook/**", "test/**/*", "**/*.stories.ts"],
     rules: {
       "@typescript-eslint/no-unused-vars": ["error", { argsIgnorePattern: "^_" }],
       "@typescript-eslint/explicit-function-return-type": "warn",

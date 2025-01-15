@@ -11,16 +11,16 @@
         "moduleResolution": "node",
         "allowSyntheticDefaultImports": true,
         "esModuleInterop": true,
+        "skipLibCheck": true,
     },
     "include": [
-        "src/**/*",
+        "src/**/*"
     ],
     "exclude": [
         "node_modules",
         "lib",
         "coverage",
         "**/*.stories.ts",
-        "**/*.stories.tsx",
     ],
     "ts-node": {
         "compilerOptions": {

@@ -4,7 +4,7 @@
   "description": "",
   "outDir": "./lib",
   "main": "./lib/custom-components-lib.js",
-  "module": "./lib/custom-components-lib.esm.js",
+  "module": "./lib/custom-components-lib.js",
   "types": "./lib/types/index.d.ts",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com",
@@ -16,7 +16,7 @@
   },
   "files": [
     "lib",
-    "types"
+    "README.md"
   ],
   "scripts": {
     "build:dev": "webpack --env mode=development",
