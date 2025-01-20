@@ -21,7 +21,7 @@ export default (env: EnvVariables): Configuration => {
       clean: true,
     },
     resolve: {
-      extensions: ['.tsx', '.ts'],
+      extensions: ['.tsx', '.ts', '.js'],
     },
     module: {
       rules: [
