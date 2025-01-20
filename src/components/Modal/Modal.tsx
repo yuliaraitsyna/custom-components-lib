@@ -7,10 +7,15 @@ interface ModalProps {
   open?: boolean;
   onClose?: () => void;
   children?: React.ReactNode;
+  className?: string;
 }
 
-const ModalWindow: React.FC<ModalProps> = ({onClose, children}) => {
+const ModalWindow: React.FC<ModalProps> = ({onClose, children, ...props}) => {
   const [isOpen, setIsOpen] = useState<boolean>(true);
+
+  const modalClassName = [styles.modal, props.className].filter(Boolean).join(' ');
+  const overlayClassName = ['overlay', styles.modalOverlay].filter(Boolean).join(' ');
+  const closeButtonClassName = ['closeButton', styles.closeButton].filter(Boolean).join(' ');
 
   const handleClose = (): void => {
     setIsOpen(false);
@@ -22,9 +27,9 @@ const ModalWindow: React.FC<ModalProps> = ({onClose, children}) => {
 
   return isOpen ? (
     <>
-      <div className={styles.modalOverlay} onClick={handleClose}></div>
-      <div className={styles.modal} role="dialog">
-        <button className={styles.closeButton} onClick={handleClose}>
+      <div className={overlayClassName} onClick={handleClose}></div>
+      <div className={modalClassName} role="dialog">
+        <button className={closeButtonClassName} onClick={handleClose}>
           ×
         </button>
         {children}

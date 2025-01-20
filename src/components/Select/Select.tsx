@@ -7,6 +7,7 @@ import styles from './Select.module.css';
 interface SelectProps extends SelectHTMLAttributes<HTMLInputElement> {
   label?: string;
   helperText?: string;
+  className?: string;
 }
 
 const Select: React.FC<SelectProps> = ({label, helperText, children, ...props}) => {
@@ -15,8 +16,10 @@ const Select: React.FC<SelectProps> = ({label, helperText, children, ...props}) 
 
   const selectRef = useRef<HTMLInputElement | null>(null);
 
-  const labelClassName = [styles.label, isFocusedLabel && styles.focused].filter(Boolean).join(' ');
-  const optionsClassName = [styles.options, isOpen && styles.open].filter(Boolean).join(' ');
+  const selectClassName = [styles.select, props.className].filter(Boolean).join(' ');
+  const helperTextClassName = ['span', styles.helperText].filter(Boolean).join(' ');
+  const labelClassName = ['label', styles.label, isFocusedLabel && styles.focused].filter(Boolean).join(' ');
+  const optionsClassName = ['options', styles.options, isOpen && styles.open].filter(Boolean).join(' ');
 
   const labelText = props.required && label ? `${label}*` : label;
 
@@ -74,13 +77,13 @@ const Select: React.FC<SelectProps> = ({label, helperText, children, ...props}) 
       <input
         {...props}
         ref={selectRef}
-        className={styles.select}
+        className={selectClassName}
         onFocus={handleFocus}
         onBlur={e => handleBlur(e)}
         readOnly={true}
         role="input"
       />
-      <span className={styles.helperText}>{helperText ?? ' '}</span>
+      <span className={helperTextClassName}>{helperText ?? ' '}</span>
       <div className={optionsClassName} role="menu">
         <ul>
           {React.Children.map(children, child => (
