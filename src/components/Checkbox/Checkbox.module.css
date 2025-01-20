@@ -1,7 +1,7 @@
 @import url('/src/styles/fonts/fonts.css');
 @import url('/src/styles/colors/colors.css');
 
-.checkbox {
+:global .checkbox {
     position: relative;
     appearance: none;
     width: 15px;
@@ -10,17 +10,17 @@
     border-radius: 2px;
 }
 
-.checkbox.checked {
+:global .checkbox.checked {
     border: solid 2px var(--primary-color);
     background-color: var(--primary-color);
 }
 
-.checkbox.disabled {
+:global .checkbox.disabled {
     border: solid 2px var(--disabled-text-color);
     background-color: transparent;
 }
 
-.checkbox.checked.disabled {
+:global .checkbox.checked.disabled {
     border: solid 2px var(--disabled-text-color);
     background-color: var(--disabled-text-color);
 }
@@ -34,7 +34,8 @@
 .label.disabled {
     color: var(--disabled-text-color);
 }
-.tickIcon {
+
+:global .tickIcon {
     display: none;
     position: absolute;
     top: 2px;
@@ -44,6 +45,6 @@
     color: white;
 }
 
-.tickIcon.checked {
+:global .tickIcon.checked {
     display: block;
 }

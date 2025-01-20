@@ -1,14 +1,14 @@
 @import url('/src/styles/fonts/fonts.css');
 @import url('/src/styles/colors/colors.css');
 
-.container {
+:global .container {
     display: flex;
     flex-direction: row;
     align-items: center;
     margin: 10px;
 }
 
-.switch {
+:global .switch {
     font-size: 12px;
     position: relative;
     display: inline-block;
@@ -16,13 +16,13 @@
     height: 1em;
 }
 
-.switch input {
+:global .switch input {
     opacity: 0;
     width: 0;
     height: 0;
 }
 
-.slider {
+:global .slider {
     position: absolute;
     cursor: pointer;
     inset: 0;
@@ -31,7 +31,7 @@
     transition: background 0.2s;
 }
 
-.slider:before {
+:global .slider:before {
     position: absolute;
     content: "";
     height: 1.4em;
@@ -44,16 +44,16 @@
     transition: transform 0.5s;
 }
 
-.switch input:checked+.slider {
+:global .switch input:checked+.slider {
     background: var(--primary-color-dark-opacite);
 }
 
-.switch input:checked+.slider:before {
+:global .switch input:checked+.slider:before {
     transform: translateX(1.7em);
     background-color: var(--primary-color-dark);
 }
 
-.switch input:disabled+.slider {
+:global .switch input:disabled+.slider {
     opacity: 50%;
 }
 

@@ -1,6 +1,9 @@
-import React, {type ButtonHTMLAttributes, useRef, useState} from 'react';
+import './Checkbox.module.css';
 import styles from './Checkbox.module.css';
+
+import React, {type ButtonHTMLAttributes, useRef, useState} from 'react';
 import tickImage from '/src/assets/icons/tick.svg';
+import clsx from 'clsx';
 
 interface CheckboxProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   label?: string;
@@ -15,11 +18,9 @@ const Checkbox: React.FC<CheckboxProps> = ({checked, label, required, disabled, 
 
   const labelText = required && label ? `${label}*` : label;
 
-  const tickClassname = ['tick', styles.tickIcon, isChecked && styles.checked].filter(Boolean).join(' ');
-  const checkboxClassName = [styles.checkbox, isChecked && styles.checked, disabled && styles.disabled, props.className]
-    .filter(Boolean)
-    .join(' ');
-  const labelClassName = ['label', disabled && 'disabled'].filter(Boolean).join(' ');
+  const tickClassname = clsx('tickIcon', isChecked && 'checked');
+  const checkboxClassName = clsx('checkbox', isChecked && 'checked', disabled && 'disabled', props.className);
+  const labelClassName = clsx(styles.label, disabled && styles.disabled);
 
   const handleButtonClick = (event: React.MouseEvent<HTMLButtonElement>): void => {
     if (disabled) return;

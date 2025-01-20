@@ -10,7 +10,7 @@
     flex-direction: column;
 }
 
-.select {
+:global .select {
     padding: 10px;
     border: 1px solid var(--disabled-text-color);
     border-radius: 5px;
@@ -18,7 +18,7 @@
     font-family: 'Roboto', sans-serif;
 }
 
-.select:focus {
+:global .select:focus {
     padding: 9px;
     border: solid 2px var(--primary-color);
 }
@@ -58,7 +58,7 @@
     color: var(--error-color);
 }
 
-.options {
+:global .options {
     position: absolute;
     z-index: 1;
     top: calc(100% - 12px);
@@ -73,18 +73,18 @@
     transition: opacity 0.5s ease;
 }
 
-.options.open {
+:global .options.open {
     opacity: 1;
     height: fit-content;
     visibility: visible;
 }
 
-.options > ul {
+:global .options > ul {
     margin: 0;
     padding: 0;
 }
 
-.options > ul > li {
+:global .options > ul > li {
     list-style: none;
     margin: 0;
     padding: 10px;
@@ -92,7 +92,7 @@
     font-size: 14px;
 }
 
-.options > ul > li:hover {
+:global .options > ul > li:hover {
     background-color: var(--hover-color);
 }
 

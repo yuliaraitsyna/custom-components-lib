@@ -1,22 +1,23 @@
-import {useEffect, useRef, useState, type InputHTMLAttributes} from 'react';
-import type {InputType} from '../../types/types';
-import React from 'react';
-
 import styles from './TextField.module.css';
+
+import React, {useEffect, useRef, useState, type InputHTMLAttributes} from 'react';
+import type {InputType} from '../../types/types';
+import clsx from 'clsx';
 
 interface TextFieldProps extends InputHTMLAttributes<HTMLInputElement> {
   error?: boolean;
   helperText?: string;
   type?: InputType;
+  className?: string;
 }
 
 const TextField: React.FC<TextFieldProps> = ({error, helperText, placeholder, required, ...props}) => {
   const [isFocused, setIsFocused] = useState(false);
   const inputRef = useRef<HTMLInputElement | null>(null);
 
-  const textFieldClassName = [styles.textField, error && styles.error].filter(Boolean).join(' ');
-  const labelClassName = [styles.label, isFocused && styles.focused, error && styles.error].filter(Boolean).join(' ');
-  const helperTextClassName = [styles.helperText, error && styles.error].filter(Boolean).join(' ');
+  const textFieldClassName = clsx('textField', error && 'error', props.className);
+  const labelClassName = clsx(styles.label, isFocused && styles.focused, error && styles.error);
+  const helperTextClassName = clsx(styles.helperText, error && styles.error);
 
   const labelText = required && placeholder ? `${placeholder}*` : placeholder;
 

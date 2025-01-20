@@ -1,8 +1,10 @@
+import './Select.module.css';
+import styles from './Select.module.css';
+
 import {useEffect, useLayoutEffect, useRef, useState, type SelectHTMLAttributes} from 'react';
 import {v4 as uuidv4} from 'uuid';
 import React from 'react';
-
-import styles from './Select.module.css';
+import clsx from 'clsx';
 
 interface SelectProps extends SelectHTMLAttributes<HTMLInputElement> {
   label?: string;
@@ -16,10 +18,9 @@ const Select: React.FC<SelectProps> = ({label, helperText, children, ...props}) 
 
   const selectRef = useRef<HTMLInputElement | null>(null);
 
-  const selectClassName = [styles.select, props.className].filter(Boolean).join(' ');
-  const helperTextClassName = ['span', styles.helperText].filter(Boolean).join(' ');
-  const labelClassName = ['label', styles.label, isFocusedLabel && styles.focused].filter(Boolean).join(' ');
-  const optionsClassName = ['options', styles.options, isOpen && styles.open].filter(Boolean).join(' ');
+  const selectClassName = clsx('select', props.className);
+  const labelClassName = clsx(styles.label, isFocusedLabel && styles.focused);
+  const optionsClassName = clsx('options', isOpen && 'open');
 
   const labelText = props.required && label ? `${label}*` : label;
 
@@ -83,7 +84,7 @@ const Select: React.FC<SelectProps> = ({label, helperText, children, ...props}) 
         readOnly={true}
         role="input"
       />
-      <span className={helperTextClassName}>{helperText ?? ' '}</span>
+      <span className={styles.helperText}>{helperText ?? ' '}</span>
       <div className={optionsClassName} role="menu">
         <ul>
           {React.Children.map(children, child => (

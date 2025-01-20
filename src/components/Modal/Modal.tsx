@@ -1,7 +1,10 @@
-import {createPortal} from 'react-dom';
+import './Modal.module.css';
 import styles from './Modal.module.css';
+
+import {createPortal} from 'react-dom';
 import {useState} from 'react';
 import React from 'react';
+import clsx from 'clsx';
 
 interface ModalProps {
   open?: boolean;
@@ -13,9 +16,7 @@ interface ModalProps {
 const ModalWindow: React.FC<ModalProps> = ({onClose, children, ...props}) => {
   const [isOpen, setIsOpen] = useState<boolean>(true);
 
-  const modalClassName = [styles.modal, props.className].filter(Boolean).join(' ');
-  const overlayClassName = ['overlay', styles.modalOverlay].filter(Boolean).join(' ');
-  const closeButtonClassName = ['closeButton', styles.closeButton].filter(Boolean).join(' ');
+  const modalClassName = clsx('modal', props.className);
 
   const handleClose = (): void => {
     setIsOpen(false);
@@ -27,9 +28,9 @@ const ModalWindow: React.FC<ModalProps> = ({onClose, children, ...props}) => {
 
   return isOpen ? (
     <>
-      <div className={overlayClassName} onClick={handleClose}></div>
+      <div className={styles.modalOverlay} onClick={handleClose}></div>
       <div className={modalClassName} role="dialog">
-        <button className={closeButtonClassName} onClick={handleClose}>
+        <button className={styles.closeButton} onClick={handleClose}>
           ×
         </button>
         {children}

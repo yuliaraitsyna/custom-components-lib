@@ -1,14 +1,14 @@
 @import url('/src/styles/fonts/fonts.css');
 @import url('/src/styles/colors/colors.css');
 
-.button {
+:global .button {
     text-transform: uppercase;
     font-family: 'Roboto', sans-serif;
     border-radius: 5px;
     color: black;
 }
 
-.contained {
+:global .contained {
     background-color: currentColor;
     color: white;
     padding: 10px;
@@ -17,92 +17,92 @@
     transition: box-shadow 0.2s ease-in-out;
 }
 
-.contained:hover {
+:global .contained:hover {
     filter: brightness(0.95);
     box-shadow: var(--shadow-color) 0px 4px 7px;
 }
 
-.contained.primary {
+:global .primary {
     background-color: var(--primary-color);
 }
 
-.contained.secondary {
+:global .secondary {
     background-color: var(--secondary-color);
 }
 
-.contained.success {
+:global .contained.success {
     background-color: var(--success-color);
 }
 
-.contained.error {
+:global .contained.error {
     background-color: var(--error-color);
 }
 
-.contained.warning {
+:global .contained.warning {
     background-color: var(--warning-color);
 }
 
-.contained.info {
+:global .contained.info {
     background-color: var(--info-color);
 }
 
-.contained:disabled {
+:global .contained:disabled {
     background-color: var(--disabled-background-color);
     color: var(--disabled-text-color);
 }
 
-.contained:disabled:hover {
+:global .contained:disabled:hover {
     filter: brightness(1);
     box-shadow: var(--shadow-color) 0px 2px 5px;
 }
 
-.outlined {
+:global .outlined {
     background-color: white;
     padding: 9px;
     border: solid currentColor 1px;
     box-shadow: none;
 }
 
-.outlined.primary {
+:global .outlined.primary {
     border-color: var(--primary-color);
     color: var(--primary-color);
 }
 
-.outlined.secondary {
+:global .outlined.secondary {
     border-color: var(--secondary-color);
     color: var(--secondary-color);
 }
 
-.outlined.success {
+:global .outlined.success {
     border-color: var(--success-color);
     color: var(--success-color);
 }
 
-.outlined.error {
+:global .outlined.error {
     border-color: var(--error-color);
     color: var(--error-color);
 }
 
-.outlined.warning {
+:global .outlined.warning {
     border-color: var(--warning-color);
     color: var(--warning-color);
 }
 
-.outlined.info {
+:global .outlined.info {
     border-color: var(--info-color);
     color: var(--info-color);
 }
 
-.outlined:disabled {
+:global .outlined:disabled {
     border-color: var(--disabled-background-color);
     color: var(--disabled-text-color);
 }
 
-.outlined:disabled:hover {
+:global .outlined:disabled:hover {
     background-color: transparent;
 }
 
-.text {
+:global .text {
     background-color: transparent;
     padding: 10px;
     color: currentColor;
@@ -110,85 +110,85 @@
     box-shadow: none;
 }
 
-.text:hover {
+:global .text:hover {
     background-color: var(--onhover-darken-color);
 }
 
-.text.primary {
+:global .text.primary {
     color: var(--primary-color);
 }
 
-.text.secondary {
+:global .text.secondary {
     color: var(--secondary-color);
 }
 
-.text.success {
+:global .text.success {
     color: var(--success-color);
 }
 
-.text.error {
+:global .text.error {
     color: var(--error-color);
 }
 
-.text.warning {
+:global .text.warning {
     color: var(--warning-color);
 }
 
-.text.info {
+:global .text.info {
     color: var(--info-color);
 }
 
-.text:disabled {
+:global .text:disabled {
     color: var(--disabled-text-color);
 }
 
-.outlined.primary:hover,
-.text.primary:hover {
+:global .outlined.primary:hover,
+:global .text.primary:hover {
     background-color: var(--primary-color-hover)
 }
 
-.outlined.secondary:hover,
-.text.secondary:hover {
+:global .outlined.secondary:hover,
+:global .text.secondary:hover {
     background-color: var(--secondary-color-hover);
 }
 
-.outlined.success:hover,
-.text.success:hover {
+:global .outlined.success:hover,
+:global .text.success:hover {
    background-color: var(--success-color-hover);
 }
 
-.outlined.error:hover,
-.text.error:hover {
+:global .outlined.error:hover,
+:global .text.error:hover {
     background-color: var(--error-color-hover);
 }
 
-.outlined.warning:hover,
-.text.warning:hover {
+:global .outlined.warning:hover,
+:global .text.warning:hover {
     background-color: var(--warning-color-hover);
 }
 
-.outlined.info:hover,
-.text.info:hover {
+:global .outlined.info:hover,
+:global .text.info:hover {
     background-color: var(--info-color-hover);
 }
 
 
-.outlined:disabled:hover,
-.text:disabled:hover {
+:global .outlined:disabled:hover,
+:global .text:disabled:hover {
     background-color: transparent;
 }
 
-.small {
+:global .small {
     height: 35px;
     font-size: 0.8rem;
 }
 
-.medium {
+:global .medium {
     height: 45px;
     font-size: 0.9rem;
 }
 
-.large {
+:global .large {
     height: 50px;
     font-size: 1rem;
 }
