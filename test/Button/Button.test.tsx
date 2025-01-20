@@ -54,4 +54,10 @@ describe('Button tests', () => {
     expect(screen.getByRole('button')).toHaveAttribute('type', 'submit');
     expect(screen.getByRole('button')).toHaveAttribute('formAction', mockURL);
   });
+
+  it('should provide className prop', () => {
+    render(<Button className="custom">Click</Button>);
+
+    expect(screen.getByRole('button')).toHaveClass('custom');
+  });
 });

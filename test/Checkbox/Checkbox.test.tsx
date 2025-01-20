@@ -70,4 +70,10 @@ describe('Checkbox tests', () => {
     const checkbox = screen.getByRole('button');
     expect(checkbox).toHaveFocus();
   });
+
+  it('should provide className prop', () => {
+    render(<Checkbox className="custom" />);
+
+    expect(screen.getByRole('button')).toHaveClass('custom');
+  });
 });

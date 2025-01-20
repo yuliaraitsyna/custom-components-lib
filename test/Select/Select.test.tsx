@@ -146,4 +146,10 @@ describe('Select tests', () => {
     expect(menu).toBeInTheDocument();
     expect(menu).not.toHaveClass('open');
   });
+
+  it('should provide className prop', () => {
+    render(<Select className="custom" />);
+
+    expect(screen.getByRole('input')).toHaveClass('custom');
+  });
 });

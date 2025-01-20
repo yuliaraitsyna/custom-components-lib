@@ -34,4 +34,10 @@ describe('Modal tests', () => {
     expect(handleClose).toHaveBeenCalledTimes(1);
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
   });
+
+  it('should provide className prop', () => {
+    render(<Modal open={true} className="customClass" />);
+
+    expect(screen.getByRole('dialog')).toHaveClass('customClass');
+  });
 });

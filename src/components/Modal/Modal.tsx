@@ -13,10 +13,10 @@ interface ModalProps {
   className?: string;
 }
 
-const ModalWindow: React.FC<ModalProps> = ({onClose, children, ...props}) => {
+const ModalWindow: React.FC<ModalProps> = ({onClose, children, className}) => {
   const [isOpen, setIsOpen] = useState<boolean>(true);
 
-  const modalClassName = clsx('modal', props.className);
+  const modalClassName = clsx('modal', className);
 
   const handleClose = (): void => {
     setIsOpen(false);
@@ -39,8 +39,15 @@ const ModalWindow: React.FC<ModalProps> = ({onClose, children, ...props}) => {
   ) : null;
 };
 
-const Modal: React.FC<ModalProps> = ({open, onClose, children}) => {
-  return open ? createPortal(<ModalWindow onClose={onClose}>{children}</ModalWindow>, document.body) : null;
+const Modal: React.FC<ModalProps> = ({open, onClose, children, className}) => {
+  return open
+    ? createPortal(
+        <ModalWindow onClose={onClose} className={className}>
+          {children}
+        </ModalWindow>,
+        document.body,
+      )
+    : null;
 };
 
 export {Modal};

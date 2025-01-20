@@ -79,7 +79,7 @@ describe('Switch tests', () => {
   });
 
   it('should support custom classNames', () => {
-    render(<Switch className="custom-class" />);
-    expect(screen.getByRole('switch')).toHaveClass('custom-class');
+    render(<Switch className="custom" />);
+    expect(screen.getByRole('switch')).toHaveClass('custom');
   });
 });

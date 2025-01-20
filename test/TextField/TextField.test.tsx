@@ -149,4 +149,10 @@ describe('TextField tests', () => {
     render(<TextField readOnly />);
     expect(screen.getByRole('textbox')).toHaveAttribute('readonly');
   });
+
+  it('should provide className prop', () => {
+    render(<TextField className="custom" />);
+
+    expect(screen.getByRole('textbox')).toHaveClass('custom');
+  });
 });
