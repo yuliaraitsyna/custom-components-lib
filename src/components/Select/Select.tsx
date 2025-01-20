@@ -40,7 +40,6 @@ const Select: React.FC<SelectProps> = ({label, helperText, children, ...props}) 
   }, [labelText]);
 
   const handleFocus = (event: React.FocusEvent<HTMLInputElement>): void => {
-    console.log('focus');
     setIsOpen(true);
     props.onFocus?.(event);
   };
