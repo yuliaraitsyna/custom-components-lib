@@ -1,7 +1,7 @@
 import './Select.module.css';
 import styles from './Select.module.css';
 
-import {useEffect, useLayoutEffect, useRef, useState, type SelectHTMLAttributes} from 'react';
+import {useCallback, useEffect, useLayoutEffect, useRef, useState, type SelectHTMLAttributes} from 'react';
 import {v4 as uuidv4} from 'uuid';
 import React from 'react';
 import clsx from 'clsx';
@@ -39,37 +39,46 @@ const Select: React.FC<SelectProps> = ({label, helperText, children, ...props}) 
     }
   }, [labelText]);
 
-  const handleFocus = (event: React.FocusEvent<HTMLInputElement>): void => {
-    setIsOpen(true);
-    props.onFocus?.(event);
-  };
+  const handleFocus = useCallback(
+    (event: React.FocusEvent<HTMLInputElement>): void => {
+      setIsOpen(true);
+      props.onFocus?.(event);
+    },
+    [setIsOpen, props.onFocus],
+  );
 
-  const handleOpenClick = (): void => {
+  const handleOpenClick = useCallback((): void => {
     isOpen ? selectRef.current?.blur() : selectRef.current?.focus();
-  };
+  }, [selectRef, isOpen]);
 
-  const handleOptionClick = (event: React.MouseEvent<HTMLLIElement>): void => {
-    const value = event.currentTarget.textContent;
+  const handleOptionClick = useCallback(
+    (event: React.MouseEvent<HTMLLIElement>): void => {
+      const value = event.currentTarget.textContent;
 
-    if (selectRef.current) {
-      selectRef.current.value = value;
-    }
+      if (selectRef.current) {
+        selectRef.current.value = value;
+      }
 
-    const changeEvent = {
-      target: {value},
-    } as React.ChangeEvent<HTMLInputElement>;
+      const changeEvent = {
+        target: {value},
+      } as React.ChangeEvent<HTMLInputElement>;
 
-    props.onChange?.(changeEvent);
-  };
+      props.onChange?.(changeEvent);
+    },
+    [props.onChange, selectRef],
+  );
 
-  const handleBlur = (event: React.FocusEvent<HTMLInputElement>): void => {
-    setIsOpen(false);
-    props.onBlur?.(event);
-  };
+  const handleBlur = useCallback(
+    (event: React.FocusEvent<HTMLInputElement>): void => {
+      setIsOpen(false);
+      props.onBlur?.(event);
+    },
+    [setIsOpen, props.onBlur],
+  );
 
-  const handleMouseDown = (event: React.MouseEvent): void => {
+  const handleMouseDown = useCallback((event: React.MouseEvent): void => {
     event.preventDefault();
-  };
+  }, []);
 
   return (
     <div className={styles.container}>
@@ -79,7 +88,7 @@ const Select: React.FC<SelectProps> = ({label, helperText, children, ...props}) 
         ref={selectRef}
         className={selectClassName}
         onFocus={handleFocus}
-        onBlur={e => handleBlur(e)}
+        onBlur={handleBlur}
         readOnly={true}
         role="input"
       />
@@ -87,13 +96,13 @@ const Select: React.FC<SelectProps> = ({label, helperText, children, ...props}) 
       <div className={optionsClassName} role="menu">
         <ul>
           {React.Children.map(children, child => (
-            <li key={uuidv4()} onMouseDown={e => handleOptionClick(e)}>
+            <li key={uuidv4()} onMouseDown={handleOptionClick}>
               {child}
             </li>
           ))}
         </ul>
       </div>
-      <button className={styles.arrow} onClick={handleOpenClick} onMouseDown={e => handleMouseDown(e)}>
+      <button className={styles.arrow} onClick={handleOpenClick} onMouseDown={handleMouseDown}>
         {isOpen ? '▲' : '▼'}
       </button>
     </div>

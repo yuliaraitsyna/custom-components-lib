@@ -26,7 +26,7 @@ const Switch: React.FC<SwitchProps> = ({label, ...props}) => {
   return (
     <div className={'container'}>
       <label className={switchClassName}>
-        <input {...props} type="checkbox" onChange={e => handleChange(e)} checked={isChecked} role="switch"></input>
+        <input {...props} type="checkbox" onChange={handleChange} checked={isChecked} role="switch"></input>
         <span className={'slider'}></span>
       </label>
       <label className={labelClassName}>{labelText}</label>

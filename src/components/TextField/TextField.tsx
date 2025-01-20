@@ -57,9 +57,9 @@ const TextField: React.FC<TextFieldProps> = ({error, helperText, placeholder, re
           type={props.type ?? 'text'}
           className={textFieldClassName}
           placeholder={''}
-          onFocus={e => handleFocus(e)}
-          onBlur={e => handleBlur(e)}
-          onKeyDown={e => handleKeyDown(e)}
+          onFocus={handleFocus}
+          onBlur={handleBlur}
+          onKeyDown={handleKeyDown}
           required={required}
           role="textbox"
         />
