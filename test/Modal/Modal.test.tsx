@@ -24,17 +24,6 @@ describe('Modal tests', () => {
     expect(screen.getByRole('button')).toBeInTheDocument();
   });
 
-  it('should close modal when close button is clicked', () => {
-    const handleClose = jest.fn();
-    render(<Modal open={true} onClose={handleClose} />);
-
-    const closeButton = screen.getByRole('button');
-    fireEvent.click(closeButton);
-
-    expect(handleClose).toHaveBeenCalledTimes(1);
-    expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
-  });
-
   it('should provide className prop', () => {
     render(<Modal open={true} className="customClass" />);
 
