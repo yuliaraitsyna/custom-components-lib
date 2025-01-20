@@ -6,6 +6,7 @@ interface CheckboxProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   label?: string;
   checked?: boolean;
   required?: boolean;
+  className?: string;
 }
 
 const Checkbox: React.FC<CheckboxProps> = ({checked, label, required, disabled, ...props}) => {
@@ -14,11 +15,11 @@ const Checkbox: React.FC<CheckboxProps> = ({checked, label, required, disabled, 
 
   const labelText = required && label ? `${label}*` : label;
 
-  const tickClassname = [styles.tickIcon, isChecked && styles.checked].filter(Boolean).join(' ');
-  const checkboxClassName = [styles.checkbox, isChecked && styles.checked, disabled && styles.disabled]
+  const tickClassname = ['tick', styles.tickIcon, isChecked && styles.checked].filter(Boolean).join(' ');
+  const checkboxClassName = [styles.checkbox, isChecked && styles.checked, disabled && styles.disabled, props.className]
     .filter(Boolean)
     .join(' ');
-  const labelClassName = [styles.label, disabled && styles.disabled].filter(Boolean).join(' ');
+  const labelClassName = ['label', disabled && 'disabled'].filter(Boolean).join(' ');
 
   const handleButtonClick = (event: React.MouseEvent<HTMLButtonElement>): void => {
     if (disabled) return;
