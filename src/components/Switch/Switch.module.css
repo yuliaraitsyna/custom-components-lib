@@ -1,0 +1,68 @@
+@import url('/src/styles/fonts/fonts.css');
+@import url('/src/styles/colors/colors.css');
+
+:global .container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 10px;
+}
+
+:global .switch {
+    font-size: 12px;
+    position: relative;
+    display: inline-block;
+    width: 3em;
+    height: 1em;
+}
+
+:global .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+:global .slider {
+    position: absolute;
+    cursor: pointer;
+    inset: 0;
+    background: var(--checkbox-border-color);
+    border-radius: 50px;
+    transition: background 0.2s;
+}
+
+:global .slider:before {
+    position: absolute;
+    content: "";
+    height: 1.4em;
+    width: 1.4em;
+    left: -0.1em;
+    top: -0.2em;
+    background-color: white;
+    border-radius: 50%;
+    box-shadow: 0 1px 3px var(--shadow-color);
+    transition: transform 0.5s;
+}
+
+:global .switch input:checked+.slider {
+    background: var(--primary-color-dark-opacite);
+}
+
+:global .switch input:checked+.slider:before {
+    transform: translateX(1.7em);
+    background-color: var(--primary-color-dark);
+}
+
+:global .switch input:disabled+.slider {
+    opacity: 50%;
+}
+
+.label {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    margin-left: 10px;
+}
+
+.label.disabled {
+    color: var(--disabled-text-color);
+}

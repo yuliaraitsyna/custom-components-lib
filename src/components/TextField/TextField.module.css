@@ -1,0 +1,78 @@
+@import url('/src/styles/colors/colors.css');
+@import url('/src/styles/fonts/fonts.css');
+
+.container {
+    position: relative;
+    width: fit-content;
+    height: fit-content;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+:global .textField {
+    padding: 10px;
+    border: 1px solid var(--disabled-text-color);
+    border-radius: 5px;
+    outline: none;
+    font-family: 'Roboto', sans-serif;
+}
+
+:global .textField:focus {
+    padding: 9px;
+    border: solid 2px var(--primary-color);
+}
+
+:global .textField.error {
+    border: 1px solid var(--error-color-dark);
+}
+
+:global .textField.error:focus {
+    border: solid 2px var(--error-color);
+}
+
+.label {
+  position: absolute;
+  top: 17px;
+  left: 12px;
+  transform: translateY(-50%);
+  background-color: white;
+  padding: 0 5px;
+  color: var(--disabled-text-color);
+  font-size: 14px;
+  font-family: 'Roboto', sans-serif;
+  pointer-events: none;
+  transition: 0.2s ease;
+}
+
+.label.focused {
+    top: 5px;
+    left: 10px;
+    transform: translateY(-100%);
+    font-size: 12px;
+    color: var(--primary-color);
+}
+
+.label.error {
+    color: var(--error-color-dark);
+}
+
+.label.error.focused {
+    color: var(--error-color);
+}
+
+.helperText {
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    line-height: 12px;
+    color: var(--helper-text-color);
+    margin: 2px 0 0 10px;
+}
+
+.helperText.error {
+    color: var(--error-color-dark);
+}
+
+.helperText.focused {
+    color: var(--error-color);
+}
