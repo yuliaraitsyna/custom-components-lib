@@ -1,0 +1,194 @@
+@import url('/src/styles/fonts/fonts.css');
+@import url('/src/styles/colors/colors.css');
+
+:global .button {
+    text-transform: uppercase;
+    font-family: 'Roboto', sans-serif;
+    border-radius: 5px;
+    color: black;
+}
+
+:global .contained {
+    background-color: currentColor;
+    color: white;
+    padding: 10px;
+    border: none;
+    box-shadow: var(--shadow-color) 0px 2px 5px;
+    transition: box-shadow 0.2s ease-in-out;
+}
+
+:global .contained:hover {
+    filter: brightness(0.95);
+    box-shadow: var(--shadow-color) 0px 4px 7px;
+}
+
+:global .primary {
+    background-color: var(--primary-color);
+}
+
+:global .secondary {
+    background-color: var(--secondary-color);
+}
+
+:global .contained.success {
+    background-color: var(--success-color);
+}
+
+:global .contained.error {
+    background-color: var(--error-color);
+}
+
+:global .contained.warning {
+    background-color: var(--warning-color);
+}
+
+:global .contained.info {
+    background-color: var(--info-color);
+}
+
+:global .contained:disabled {
+    background-color: var(--disabled-background-color);
+    color: var(--disabled-text-color);
+}
+
+:global .contained:disabled:hover {
+    filter: brightness(1);
+    box-shadow: var(--shadow-color) 0px 2px 5px;
+}
+
+:global .outlined {
+    background-color: white;
+    padding: 9px;
+    border: solid currentColor 1px;
+    box-shadow: none;
+}
+
+:global .outlined.primary {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+:global .outlined.secondary {
+    border-color: var(--secondary-color);
+    color: var(--secondary-color);
+}
+
+:global .outlined.success {
+    border-color: var(--success-color);
+    color: var(--success-color);
+}
+
+:global .outlined.error {
+    border-color: var(--error-color);
+    color: var(--error-color);
+}
+
+:global .outlined.warning {
+    border-color: var(--warning-color);
+    color: var(--warning-color);
+}
+
+:global .outlined.info {
+    border-color: var(--info-color);
+    color: var(--info-color);
+}
+
+:global .outlined:disabled {
+    border-color: var(--disabled-background-color);
+    color: var(--disabled-text-color);
+}
+
+:global .outlined:disabled:hover {
+    background-color: transparent;
+}
+
+:global .text {
+    background-color: transparent;
+    padding: 10px;
+    color: currentColor;
+    border: none;
+    box-shadow: none;
+}
+
+:global .text:hover {
+    background-color: var(--onhover-darken-color);
+}
+
+:global .text.primary {
+    color: var(--primary-color);
+}
+
+:global .text.secondary {
+    color: var(--secondary-color);
+}
+
+:global .text.success {
+    color: var(--success-color);
+}
+
+:global .text.error {
+    color: var(--error-color);
+}
+
+:global .text.warning {
+    color: var(--warning-color);
+}
+
+:global .text.info {
+    color: var(--info-color);
+}
+
+:global .text:disabled {
+    color: var(--disabled-text-color);
+}
+
+:global .outlined.primary:hover,
+:global .text.primary:hover {
+    background-color: var(--primary-color-hover)
+}
+
+:global .outlined.secondary:hover,
+:global .text.secondary:hover {
+    background-color: var(--secondary-color-hover);
+}
+
+:global .outlined.success:hover,
+:global .text.success:hover {
+   background-color: var(--success-color-hover);
+}
+
+:global .outlined.error:hover,
+:global .text.error:hover {
+    background-color: var(--error-color-hover);
+}
+
+:global .outlined.warning:hover,
+:global .text.warning:hover {
+    background-color: var(--warning-color-hover);
+}
+
+:global .outlined.info:hover,
+:global .text.info:hover {
+    background-color: var(--info-color-hover);
+}
+
+
+:global .outlined:disabled:hover,
+:global .text:disabled:hover {
+    background-color: transparent;
+}
+
+:global .small {
+    height: 35px;
+    font-size: 0.8rem;
+}
+
+:global .medium {
+    height: 45px;
+    font-size: 0.9rem;
+}
+
+:global .large {
+    height: 50px;
+    font-size: 1rem;
+}

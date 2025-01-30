@@ -1,5 +1,8 @@
 node_modules
 package-lock.json
 lib
+**/.DS_Store
+.DS_Store
 *storybook.log
 coverage
+.npmrc

@@ -1,5 +1,7 @@
 {
     "compilerOptions": {
+        "declaration": true,
+        "declarationDir": "lib",
         "outDir": "lib",
         "noImplicitAny": true,
         "module": "ESNext",
@@ -9,18 +11,17 @@
         "moduleResolution": "node",
         "allowSyntheticDefaultImports": true,
         "esModuleInterop": true,
+        "skipLibCheck": true,
+        "types": ["@testing-library/jest-dom", "node"]
     },
     "include": [
-        "webpack.config.ts",
-        "src/**/*",
-        ".storybook/**/*",
-        "jest.config.js",
-        "test/**/*",
+        "src/**/*"
     ],
     "exclude": [
         "node_modules",
         "lib",
         "coverage",
+        "**/*.stories.ts",
     ],
     "ts-node": {
         "compilerOptions": {

@@ -1,0 +1,50 @@
+@import url('/src/styles/fonts/fonts.css');
+@import url('/src/styles/colors/colors.css');
+
+:global .checkbox {
+    position: relative;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    border: solid 2px var(--checkbox-border-color);
+    border-radius: 2px;
+}
+
+:global .checkbox.checked {
+    border: solid 2px var(--primary-color);
+    background-color: var(--primary-color);
+}
+
+:global .checkbox.disabled {
+    border: solid 2px var(--disabled-text-color);
+    background-color: transparent;
+}
+
+:global .checkbox.checked.disabled {
+    border: solid 2px var(--disabled-text-color);
+    background-color: var(--disabled-text-color);
+}
+
+.label {
+    font-family: 'Roboro', sans-serif;
+    margin-left: 10px;
+    font-size: 14px;
+}
+
+.label.disabled {
+    color: var(--disabled-text-color);
+}
+
+:global .tickIcon {
+    display: none;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 10px;
+    height: 10px;
+    color: white;
+}
+
+:global .tickIcon.checked {
+    display: block;
+}

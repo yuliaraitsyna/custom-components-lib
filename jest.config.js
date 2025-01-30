@@ -2,7 +2,7 @@ module.exports = {
     verbose: true,
     preset: 'ts-jest',
     testEnvironment: 'jsdom',
-    setupFilesAfterEnv: ['<rootDir>/src/setupTests.ts'],
+    setupFilesAfterEnv: ['<rootDir>/test/setupTests.ts'],
     collectCoverageFrom: ['**/*.{ts,tsx}','!**/node_modules/**'],
     coverageThreshold: {
       global: {
@@ -11,5 +11,9 @@ module.exports = {
         lines: 100,
         statements: 100,
       },
+    },
+    moduleNameMapper: {
+      "\\.css$": "identity-obj-proxy",
+      "^.+\\.svg$": "jest-svg-transformer",
     },
 };
